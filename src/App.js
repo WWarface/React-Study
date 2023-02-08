@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import Header from './components/Header';
-import Profile from './components/Profile';
-import SideBar from './components/SideBar';
+import Header from './components/Header/Header';
+import Profile from './components/Profile/Profile';
+import SideBar from './components/SideBar/SideBar';
 
 const App = () => {
   return (

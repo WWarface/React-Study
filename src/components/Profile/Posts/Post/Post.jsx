@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './Post.module.css'
 
-const Post = () => {
+const Post = (props) => {
     return(<div className={s.sentContainer}>
         <div className={s.circle}></div>
-        <p>Why nobody hook me</p>
+        <p>{props.message}</p>
     </div>);
 }
 

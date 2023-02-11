@@ -8,9 +8,9 @@ const Posts = () => {
         <h3 className={s.text}>My posts</h3>
         <InputWithPlaceholder />
         <button className={s.button}>Send</button>
-        <Post />
-        <Post />
-        <Post />
+        <Post message='I want to hook negro' />
+        <Post message='I want to hook meepo' />
+        <Post message='I want  Mops' />
         
     </div>);
 }

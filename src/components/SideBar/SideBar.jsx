@@ -1,17 +1,19 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import s from './SideBar.module.css'
 
 
 const SideBar = () => {
     return (
         <aside>
-            <div className={s.link}><a href='/profile'>Profile</a></div>
-            <div className={s.link}><a href='/dialogs'>Messages</a><br></br></div>
-            <div className={s.link}><a href='/news'>News</a><br></br></div>
-            <div className={s.link}><a href='/music'>Music</a><br></br></div>
-            <div className={s.link}><a href='/settings'>Settings</a><br></br></div>
+            <div className={s.link}><NavLink to={'/profile'} className={navData => navData.isActive ? s.active : s.item}>Profile</NavLink></div>
+            <div className={s.link}><NavLink to={'/dialogs'} className={navData => navData.isActive ? s.active : s.item}>Messages</NavLink><br></br></div>
+            <div className={s.link}><NavLink to={'/news'} className={navData => navData.isActive ? s.active : s.item}>News</NavLink><br></br></div>
+            <div className={s.link}><NavLink to={'/music'} className={navData => navData.isActive ? s.active : s.item}>Music</NavLink><br></br></div>
+            <div className={s.link}><NavLink to={'/settings'} className={navData => navData.isActive ? s.active : s.item}>Settings</NavLink><br></br></div>
         </aside>
     );
 }
+
 
 export default SideBar;

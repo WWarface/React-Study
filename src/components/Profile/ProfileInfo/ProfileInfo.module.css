@@ -1,0 +1,16 @@
+.name {
+    margin-top: 0;
+    font-size: 34px;
+    font-weight: 600;
+    color: rgb(110, 109, 109);
+  }
+
+  .profileContainer {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .picture {
+    width: 76%;
+  }

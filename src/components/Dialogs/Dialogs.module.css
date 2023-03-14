@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex: 80%;
+}
+
+.dialogs {
+    display: flex;
+    flex:30%;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    padding: 5px;
+    flex-direction: column;
+
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+
+.messages {
+    flex:60%;
+    border: 1px solid #dbdbdb;
+    border-left: none;
+}

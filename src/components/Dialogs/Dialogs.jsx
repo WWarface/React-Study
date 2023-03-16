@@ -4,10 +4,10 @@ import s from './Dialogs.module.css'
 import Message from './Message/Message.jsx';
 
 const Dialogs = (props) => {    
-       
-    let dialogsElements = props.dialogs.map(d => <Dialog isActive={d.isActive} name={d.name} url={d.url} key={d.id}/>)
+    
+    let dialogsElements = props.state.dialogs.map(d => <Dialog isActive={d.isActive} name={d.name} url={d.url} key={d.id}/>)
 
-    let messageElements = props.messages.map(m => <Message message={m.message} key={m.id}/> )
+    let messageElements = props.state.messages.map(m => <Message message={m.message} key={m.id}/> )
  
     return (
         <div className={s.wrapper}>

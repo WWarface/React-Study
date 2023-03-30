@@ -1,3 +1,5 @@
+import {renderEntireTree} from "../render";
+
 let state = {
     profilePage: {
         posts: [
@@ -34,6 +36,14 @@ let state = {
             { id: '6', name: 'Omega', url: 'https://i.redd.it/39o99a40cln61.jpg'}           
         ]
     }          
+};
+
+export let addMessage = (text) => {
+    let message = {message: text, id: state.dialogPage.messages.length+1};
+
+    state.dialogPage.messages.push(message);
+    debugger
+    renderEntireTree(state);
 };
 
 export default state

@@ -12,9 +12,9 @@ const Dialogs = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        debugger;
         let text = newPostElement.current.value;
-        alert(text);
+        debugger
+        props.addMessage(text);
     }
 
     return (

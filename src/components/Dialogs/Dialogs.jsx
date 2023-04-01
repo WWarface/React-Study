@@ -5,16 +5,20 @@ import Message from './Message/Message.jsx';
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.state.dialogs.map(d => <Dialog isActive={d.isActive} name={d.name} url={d.url} key={d.id} />)
+    let dialogsElements = props.dialogPage.dialogs.map(d => <Dialog isActive={d.isActive} name={d.name} url={d.url} key={d.id} />)
 
-    let messageElements = props.state.messages.map(m => <Message message={m.message} key={m.id} />)
+    let messageElements = props.dialogPage.messages.map(m => <Message message={m.message} key={m.id} />)
 
     let newPostElement = React.createRef();
 
-    let addPost = () => {
+    let addPost = () => {             
+        props.addMessage();
+        props.updateMessageText('');
+    }
+
+    let updateText = () => {
         let text = newPostElement.current.value;
-        debugger
-        props.addMessage(text);
+        props.updateMessageText(text);
     }
 
     return (
@@ -25,7 +29,9 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {messageElements}
                 <div className={s.submissionContainer}>
-                    <textarea ref={newPostElement} className={s.textArea}></textarea>
+                    <textarea ref={newPostElement} className={s.textArea}
+                    onChange={updateText}
+                    value={props.dialogPage.newMessageText} />
                     <button onClick={ addPost } className={s.textAreaButton}>Send Message</button>
                 </div>
             </div>

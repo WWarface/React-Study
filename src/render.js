@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom';
-import {addMessage} from './redux/state';
+import {addMessage,updateMessageText} from './redux/state';
 import reportWebVitals from './reportWebVitals';
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-export let renderEntireTree = (state) => {
-    debugger
-    const root = ReactDOM.createRoot(document.getElementById('root'));
+export let renderEntireTree = (state) => {    
     root.render (
         <React.StrictMode>
             <BrowserRouter>
                 <App state={state}
-                    addMessage={addMessage}/>
+                    addMessage={addMessage}
+                    updateMessageText={updateMessageText}/>
             </BrowserRouter>
         </React.StrictMode>
     );

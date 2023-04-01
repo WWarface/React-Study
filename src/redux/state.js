@@ -22,6 +22,8 @@ let state = {
             { message: "Hi negros AXE!", id: "1" },
             { message: "Ubili nekra!", id: "2" }
         ],
+
+        newMessageText: 'type text here'
     },
        
 
@@ -38,11 +40,21 @@ let state = {
     }          
 };
 
-export let addMessage = (text) => {
-    let message = {message: text, id: state.dialogPage.messages.length+1};
+window.state = state;
+
+
+export let addMessage = () => {
+    let message = {message: state.dialogPage.newMessageText, id: state.dialogPage.messages.length+1};
 
     state.dialogPage.messages.push(message);
-    debugger
+
+    state.dialogPage.newMessageText = '';
+    
+    renderEntireTree(state);
+};
+
+export let updateMessageText = (newText) => {
+    state.dialogPage.newMessageText = newText;
     renderEntireTree(state);
 };
 

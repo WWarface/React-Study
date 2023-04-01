@@ -17,7 +17,9 @@ const App = (props) => {
           <SideBar  state={props.state.friendsPage}/>
           <Routes>
             <Route path='/profile' element={<Profile state={props.state.profilePage} />} />
-            <Route path='/dialogs/*' element={<Dialogs state={props.state.dialogPage} addMessage={props.addMessage}/>} />
+            <Route path='/dialogs/*' element={<Dialogs dialogPage={props.state.dialogPage} 
+            addMessage={props.addMessage}
+            updateMessageText={props.updateMessageText}/>} />
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />

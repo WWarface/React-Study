@@ -99,35 +99,54 @@ let store = {
         console.log("no handler");
     },
 
-    addMessage() {
-        let message = {
-            message: this._state.dialogPage.newMessageText,
-            id: this._state.dialogPage.messages.length + 1
-        };
+    // addMessage() {
+    //     let message = {
+    //         message: this._state.dialogPage.newMessageText,
+    //         id: this._state.dialogPage.messages.length + 1
+    //     };
 
-        this._state.dialogPage.messages.push(message);
+    //     this._state.dialogPage.messages.push(message);
 
-        this._state.dialogPage.newMessageText = '';
+    //     this._state.dialogPage.newMessageText = '';
 
-        this._callSubscriber(this);
+    //     this._callSubscriber(this);
+    // },
+
+    // updateMessageText(newText){
+    //     this._state.dialogPage.newMessageText=newText;
+    //     this._callSubscriber(this);
+    // },
+
+    dispatch(action) {
+        if (action.type === "ADD_MESSAGE") {
+            let message = {
+                message: this._state.dialogPage.newMessageText,
+                id: this._state.dialogPage.messages.length + 1
+            };
+
+            this._state.dialogPage.messages.push(message);
+
+            this._state.dialogPage.newMessageText = '';
+
+            this._callSubscriber(this);
+        } else if (action.type === "UPDATE_MESSAGE_TEXT") {
+            if(action.newText === undefined) alert("text is undefined")
+            this._state.dialogPage.newMessageText = action.newText;
+            this._callSubscriber(this); // _callSubscriber це по суті RerenderEntireTree(state);
+        }
     },
 
-    updateMessageText(newText){        
-        this._state.dialogPage.newMessageText=newText;
-        this._callSubscriber(this);
-    },
-
-    subscribe(observer){
+    subscribe(observer) {
         this._callSubscriber = observer;
     },
 
-    getState(){
+    getState() {
         return this._state;
-    }    
+    }
 
 }
 
-window.store =store;
+window.store = store;
 
 // let renderEntireTree = () => {
 //     console.log("state has been changed");

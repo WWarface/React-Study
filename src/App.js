@@ -18,9 +18,8 @@ debugger
           <SideBar  state={props.store.getState().friendsPage}/>
           <Routes>
             <Route path='/profile' element={<Profile profilePage={props.store.getState().profilePage} />} />
-            <Route path='/dialogs/*' element={<Dialogs dialogPage={props.store.getState().dialogPage} 
-            addMessage={props.store.addMessage.bind(props.store)}
-            updateMessageText={props.store.updateMessageText.bind(props.store)}/>} />
+            <Route path='/dialogs/*' element={<Dialogs dialogPage={props.store.getState().dialogPage}             
+            dispatch={props.store.dispatch.bind(props.store)}/>} />
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />

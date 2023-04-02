@@ -1,4 +1,6 @@
-import {renderEntireTree} from "../render";
+let renderEntireTree = () => {
+    console.log("state has been changed");
+}
 
 let state = {
     profilePage: {
@@ -43,7 +45,7 @@ let state = {
 window.state = state;
 
 
-export let addMessage = () => {
+export const addMessage = () => {
     let message = {message: state.dialogPage.newMessageText, id: state.dialogPage.messages.length+1};
 
     state.dialogPage.messages.push(message);
@@ -53,9 +55,14 @@ export let addMessage = () => {
     renderEntireTree(state);
 };
 
-export let updateMessageText = (newText) => {
+export const updateMessageText = (newText) => {
     state.dialogPage.newMessageText = newText;
     renderEntireTree(state);
 };
+
+export let subscribe = (observer) => {
+    renderEntireTree = observer;
+    debugger
+}
 
 export default state

@@ -13,7 +13,6 @@ const Dialogs = (props) => {
 
     let addPost = () => {             
         props.addMessage();
-        props.updateMessageText('');
     }
 
     let updateText = () => {

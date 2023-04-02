@@ -11,7 +11,7 @@ const Profile = (props) => {
         <div className={s.content}>
             <img className={s.contentImage} src='https://i.ytimg.com/vi/V33G0n7dQVA/maxresdefault.jpg' />
             <ProfileInfo />
-            <Posts state={props.state.posts} />
+            <Posts posts={props.profilePage.posts} />
         </div>
     );
 }

@@ -3,24 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom';
-import {addMessage,subscribe,updateMessageText} from './redux/state';
-import state from './redux/state';
+import store from './redux/state';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let renderEntireTree = (state) => {    
+let renderEntireTree = (store) => {    
     root.render (
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state}
-                    addMessage={addMessage}
-                    updateMessageText={updateMessageText}/>
+                <App store={store}/>
             </BrowserRouter>
         </React.StrictMode>
     );
 }
 
-renderEntireTree(state);
+renderEntireTree(store);
 
-subscribe(renderEntireTree);
+store.subscribe(renderEntireTree);
+// subscribe(renderEntireTree);
 

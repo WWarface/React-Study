@@ -9,17 +9,18 @@ import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import SideBar from './components/SideBar/SideBar';
 
-const App = (props) => {
+const App = (props) => {  
+debugger
   return (
       <div className='wrapper'>
         <Header />
         <div className='main-content-wrapper'>
-          <SideBar  state={props.state.friendsPage}/>
+          <SideBar  state={props.store.getState().friendsPage}/>
           <Routes>
-            <Route path='/profile' element={<Profile state={props.state.profilePage} />} />
-            <Route path='/dialogs/*' element={<Dialogs dialogPage={props.state.dialogPage} 
-            addMessage={props.addMessage}
-            updateMessageText={props.updateMessageText}/>} />
+            <Route path='/profile' element={<Profile profilePage={props.store.getState().profilePage} />} />
+            <Route path='/dialogs/*' element={<Dialogs dialogPage={props.store.getState().dialogPage} 
+            addMessage={props.store.addMessage.bind(props.store)}
+            updateMessageText={props.store.updateMessageText.bind(props.store)}/>} />
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />

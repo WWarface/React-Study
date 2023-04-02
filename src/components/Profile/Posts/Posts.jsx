@@ -5,7 +5,7 @@ import s from './Posts.module.css'
 
 const Posts = (props) => {   
     
-    let postsElements = props.state.map( p => <Post key={p.id} message={p.message} />)
+    let postsElements = props.posts.map( p => <Post key={p.id} message={p.message} />)
     
     return (<div className={s.postsContainer}>
         <h3 className={s.text}>My posts</h3>

@@ -4,18 +4,20 @@ import s from './Dialogs.module.css'
 import Message from './Message/Message.jsx';
 
 const Dialogs = (props) => {
-
+    
     let dialogsElements = props.dialogPage.dialogs.map(d => <Dialog isActive={d.isActive} name={d.name} url={d.url} key={d.id} />)
 
     let messageElements = props.dialogPage.messages.map(m => <Message message={m.message} key={m.id} />)
 
     let newPostElement = React.createRef();
 
-    let addPost = () => {             
+    let addPost = () => {       
+        debugger      
         props.addMessage();
     }
 
     let updateText = () => {
+        debugger
         let text = newPostElement.current.value;
         props.updateMessageText(text);
     }

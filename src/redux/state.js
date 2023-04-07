@@ -9,7 +9,7 @@ let store = {
                     message: "Ya segodnya seriy",
                     id: "0"
                 }, {
-                    message: "ee kak rulit",
+                    message: "ee kak runnnlit",
                     id: "1"
                 }, {
                     message: "a zalubku ce zroblu a zalubky",

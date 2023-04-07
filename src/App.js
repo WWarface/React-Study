@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dialogs from './components/Dialogs/Dialogs';
 import Header from './components/Header/Header';
@@ -9,23 +9,24 @@ import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import SideBar from './components/SideBar/SideBar';
 
-const App = (props) => {
+const App = (props) => {  
+debugger
   return (
-    <BrowserRouter>
       <div className='wrapper'>
         <Header />
         <div className='main-content-wrapper'>
-          <SideBar />
+          <SideBar  state={props.store.getState().friendsPage}/>
           <Routes>
-            <Route path='/profile' element={<Profile posts={props.posts} />} />
-            <Route path='/dialogs/*' element={<Dialogs dialogs={props.dialogs} messages={props.messages} />} />
+            <Route path='/profile' element={<Profile profilePage={props.store.getState().profilePage} />} />
+            <Route path='/dialogs/*' element={<Dialogs dialogPage={props.store.getState().dialogPage}             
+            dispatch={props.store.dispatch.bind(props.store)}/>} />
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />
           </Routes>
         </div>
-      </div>
-    </BrowserRouter>
+      </div>     
+
   );  
 }
 

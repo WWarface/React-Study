@@ -17,7 +17,50 @@
 }
 
 .messages {
+    display: flex;
     flex:60%;
     border: 1px solid #dbdbdb;
     border-left: none;
+    padding: 20px 20px 0;
+    flex-direction: column;
+    
+    justify-content: space-between;
+}
+
+.messages .textArea {    
+    width: 99%;  
+    border-color: #363636;  
+    border-radius: 40px;
+    resize: none;
+    background-color: #000000;
+    color: #fff;    
+    padding-left: 45px;
+    line-height: 1;
+    padding-top: 18px;
+    font-size: 20px;
+}
+
+.textAreaButton {
+    width: 158px;
+    height: 30px;
+    align-self: last baseline; 
+    margin:10px 0 18px 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #0095f6;
+    font-size: 18px;
+    border: none;
+    background-color: transparent;
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.submissionContainer {
+    align-self: flex-end;
+    margin-top: auto;
+    width: 100%;  
+    display: flex;
+    flex-direction: row;
+    position: relative;
 }

@@ -1,8 +1,7 @@
 import React from 'react';
 import Post from './Post/Post';
-import InputWithPlaceholder from './InputWithPlaceholder';
 import s from './Posts.module.css'
-import { addPostActionCreator, updatePostTextActionCreator } from '../../../redux/state';
+import { addPostActionCreator, updatePostTextActionCreator } from '../../../redux/profileReducer';
 
 
 

@@ -4,7 +4,7 @@ import s from './Dialog.module.css'
 
 const Dialog = (props) => {
     const dialogStyle = {
-        backgroundColor: props.isActive ? '#efefef' : 'white',
+        backgroundColor: props.isActive ? '#262626' : '#000000',
     };
 
     return (

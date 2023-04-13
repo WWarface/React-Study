@@ -9,8 +9,15 @@
     height: auto;
     display: flex;
     flex-direction: row;
+    border: #363636;
+    border-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-right-width: 0px;
+    border-left-width: 0px;
   }
   
   .picture {
     width: 76%;
+    margin-left: 10px;
   }

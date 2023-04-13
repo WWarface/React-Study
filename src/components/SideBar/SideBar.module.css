@@ -7,7 +7,10 @@
 aside {
     margin-right: 15px;    
     flex: 20%;
-    background-color: steelblue;
+    background-color: #000000;
+    border: #363636;
+    border-width: 1px;
+    border-style: solid;
 }
 
 .item {

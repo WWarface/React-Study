@@ -5,7 +5,7 @@ import s from './Friends.module.css'
 
 const Friends = (props) => {
 
-    let friendsElements = props.state.map(d => <Friend  name={d.name} url={d.url} key={d.id}/>)
+    let friendsElements = props.friendDialogs.map(d => <Friend  name={d.name} url={d.url} key={d.id}/>)
 
 
     return(

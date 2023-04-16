@@ -1,9 +1,15 @@
 .message {
-    
+    background-color: #262626; /* Задаем серый цвет фона */
+    display: inline-block; /* Делаем элемент блочным, чтобы фон мог растягиваться по ширине текста */
+    padding: 12px 17px 12px 17px; /* Задаем отступы вокруг текста, чтобы создать внешний фон */
+    margin-left: 10px;
+    border-radius: 22px;
+    align-self: flex-start;
+    margin-bottom: 14px;
 }
 
 .messageText {
-    background-color: rgb(73, 73, 73);
     color: #fff;
-    border-radius: 10px;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;;
 }

@@ -14,7 +14,7 @@ const SideBar = (props) => {
             <div className={s.link}><NavLink to={'/music'} className={navData => navData.isActive ? s.active : s.item}>Music</NavLink><br></br></div>
             <div className={s.link}><NavLink to={'/settings'} className={navData => navData.isActive ? s.active : s.item}>Settings</NavLink><br></br></div>
 
-            <Friends state={props.state.friendDialogs}/>
+            <Friends friendDialogs={props.friendsPage.friendDialogs}/>
         </aside>
     );
 }

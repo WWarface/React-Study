@@ -2,16 +2,15 @@
     display: flex;
     flex-direction: row;
     flex: 80%;
+    border: 1px solid #363636;
 }
 
 .dialogs {
     display: flex;
     flex:30%;
-    border: 1px solid #dbdbdb;
-    border-radius: 5px;
     padding: 5px;
     flex-direction: column;
-
+    border-right: 1px solid #363636;
     border-top-right-radius: 0%;
     border-bottom-right-radius: 0%;
 }
@@ -19,7 +18,6 @@
 .messages {
     display: flex;
     flex:60%;
-    border: 1px solid #dbdbdb;
     border-left: none;
     padding: 20px 20px 0;
     flex-direction: column;

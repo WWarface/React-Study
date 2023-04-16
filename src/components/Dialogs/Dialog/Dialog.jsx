@@ -4,14 +4,14 @@ import s from './Dialog.module.css'
 
 const Dialog = (props) => {
     const dialogStyle = {
-        backgroundColor: props.isActive ? '#efefef' : 'white',
+        backgroundColor: props.isActive ? '#262626' : '#000000',
     };
 
     return (
         <NavLink to={"/dialogs/"+props.name}>
             <div className={s.dialog} style={dialogStyle}>
                 <div className={s.avatarContainer}>
-                    <img className={s.avatar} src={props.url} />
+                    <img className={s.avatar} src={props.url} alt='not'/>
                 </div>
                 <div className={s.name}>
                     <span>{props.name}</span>

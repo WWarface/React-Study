@@ -2,7 +2,7 @@ import React from 'react';
 import Dialog from './Dialog/Dialog';
 import s from './Dialogs.module.css'
 import Message from './Message/Message.jsx';
-import { updateMessageTextActionCreator,addMessageActionCreator } from '../../redux/state';
+import { updateMessageTextActionCreator,addMessageActionCreator } from '../../redux/dialogPageReducer';
 
 const Dialogs = (props) => {
 
@@ -17,6 +17,7 @@ const Dialogs = (props) => {
     }
 
     let updateText = () => {
+        debugger
         let text = newPostElement.current.value;
         props.dispatch(updateMessageTextActionCreator(text));
     }

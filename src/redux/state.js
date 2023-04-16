@@ -1,5 +1,7 @@
-const ADD_MESSAGE = "ADD_MESSAGE";
-const UPDATE_MESSAGE_TEXT = "UPDATE_MESSAGE_TEXT";
+import dialogPageReducer from "./dialogPageReducer";
+import profileReducer from "./profileReducer";
+
+
 
 let store = {
     _state: {
@@ -15,7 +17,8 @@ let store = {
                     message: "a zalubku ce zroblu a zalubky",
                     id: "2"
                 }
-            ]
+            ],
+            newPostMessage: ''
         },
 
         dialogPage: {
@@ -121,22 +124,10 @@ let store = {
     // },
 
     dispatch(action) {
-        if (action.type === ADD_MESSAGE) {
-            let message = {
-                message: this._state.dialogPage.newMessageText,
-                id: this._state.dialogPage.messages.length + 1
-            };
+        this._state.profilePage=profileReducer(this._state.profilePage,action);
+        this._state.dialogPage=dialogPageReducer(this._state.dialogPage,action);
 
-            this._state.dialogPage.messages.push(message);
-
-            this._state.dialogPage.newMessageText = '';
-
-            this._callSubscriber(this);
-        } else if (action.type === UPDATE_MESSAGE_TEXT) {
-            if(action.newText === undefined) alert("text is undefined")
-            this._state.dialogPage.newMessageText = action.newText;
-            this._callSubscriber(this); // _callSubscriber це по суті RerenderEntireTree(state);
-        }
+        this._callSubscriber(this);
     },
 
     subscribe(observer) {
@@ -148,14 +139,6 @@ let store = {
     }
 
 }
-
-export const updateMessageTextActionCreator = (text) => ({type: UPDATE_MESSAGE_TEXT, newText: text});
-
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-
-
-
-window.store = store;
 
 
 export default store

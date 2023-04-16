@@ -5,5 +5,8 @@
   }
   
   header {
-    background-color: steelblue;
+    background-color: #000000;
+    border: #363636;
+    border-width: 1px;
+    border-style: solid;
   }

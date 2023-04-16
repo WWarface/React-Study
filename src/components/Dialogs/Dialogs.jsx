@@ -5,6 +5,7 @@ import Message from './Message/Message.jsx';
 import { updateMessageTextActionCreator,addMessageActionCreator } from '../../redux/dialogPageReducer';
 
 const Dialogs = (props) => {
+    debugger
 
     let dialogsElements = props.dialogPage.dialogs.map(d => <Dialog isActive={d.isActive} name={d.name} url={d.url} key={d.id} />)
 

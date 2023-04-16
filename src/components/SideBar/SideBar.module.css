@@ -4,6 +4,10 @@
 }
 
 
+.link:hover {
+    cursor: pointer;
+}
+
 aside {
     margin-right: 15px;    
     flex: 20%;

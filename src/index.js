@@ -7,12 +7,12 @@ import store from './redux/redux-store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let renderEntireTree = (state) => {    
+let renderEntireTree = (store) => {    
     
     root.render (
         <React.StrictMode>
             <BrowserRouter>
-                <App store={state}/>
+                <App store={store} />
             </BrowserRouter>
         </React.StrictMode>
     );
@@ -20,8 +20,7 @@ let renderEntireTree = (state) => {
 
 renderEntireTree(store);
 
-store.subscribe(() => {    
-    let state = store.getState();
-    renderEntireTree(state);
+store.subscribe(() => {        
+    renderEntireTree(store);
 });
 

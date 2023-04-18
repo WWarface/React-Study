@@ -2,10 +2,8 @@ import React from 'react';
 import Dialog from './Dialog/Dialog';
 import s from './Dialogs.module.css'
 import Message from './Message/Message.jsx';
-import { updateMessageTextActionCreator,addMessageActionCreator } from '../../redux/dialogPageReducer';
 
 const Dialogs = (props) => {
-    debugger
 
     let dialogsElements = props.dialogPage.dialogs.map(d => <Dialog isActive={d.isActive} name={d.name} url={d.url} key={d.id} />)
 
@@ -13,14 +11,13 @@ const Dialogs = (props) => {
 
     let newPostElement = React.createRef();
 
-    let addPost = () => {
-        props.dispatch(addMessageActionCreator());
+    let onAddPost = () => {
+        props.addPost();
     }
 
-    let updateText = () => {
-        debugger
+    let onUpdateText = () => {        
         let text = newPostElement.current.value;
-        props.dispatch(updateMessageTextActionCreator(text));
+        props.updateText(text);
     }
 
     return (
@@ -32,9 +29,9 @@ const Dialogs = (props) => {
                 {messageElements}
                 <div className={s.submissionContainer}>
                     <textarea ref={newPostElement} className={s.textArea}
-                        onChange={updateText}
+                        onChange={onUpdateText}
                         value={props.dialogPage.newMessageText} />
-                    <button onClick={addPost} className={s.textAreaButton}>Send Message</button>
+                    <button onClick={onAddPost} className={s.textAreaButton}>Send Message</button>
                 </div>
             </div>
         </div>

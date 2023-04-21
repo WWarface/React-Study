@@ -2,17 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import store from './redux/redux-store';
+import StoreContext from './StoreContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let renderEntireTree = (store) => {    
-    
-    root.render (
+let renderEntireTree = (store) => {
+
+    root.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App store={store} />
+                <StoreContext.Provider value={store}>
+                    <App />
+                </StoreContext.Provider>
             </BrowserRouter>
         </React.StrictMode>
     );
@@ -20,7 +23,7 @@ let renderEntireTree = (store) => {
 
 renderEntireTree(store);
 
-store.subscribe(() => {        
+store.subscribe(() => {
     renderEntireTree(store);
 });
 

@@ -18,6 +18,16 @@
   }
   
   .picture {
-    width: 76%;
+    width: 300px;
+    height: 200px;
     margin-left: 10px;
+  }
+
+  .pictureContainer{
+    flex: 30%;
+  }
+
+  .profileInfoContainer{
+    flex: 70%;
+    padding-left: 15px;
   }

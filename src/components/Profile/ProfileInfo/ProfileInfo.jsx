@@ -5,10 +5,10 @@ import s from './ProfileInfo.module.css'
 function ProfileInfo(props) {
     return (
         <div className={s.profileContainer}>
-            <div>
-                <img className={s.picture} alt="Not found" src='https://dota2.ru/img/heroes/pudge/portrait.jpg'></img>
+            <div className={s.pictureContainer}>
+                <img className={s.picture} alt="Not found" src='https://virtus-img.cdnvideo.ru/images/og/plain/6c/6cb3e58326702d500847f61e932317b2.jpg'></img>
             </div>
-            <div>
+            <div className={s.profileInfoContainer}>
                 <h3 className={s.name}>Pudge</h3>
                 <p>Date of birth: 2 january</p>
                 <p>City: Zhmerynka</p>

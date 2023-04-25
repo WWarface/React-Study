@@ -44,21 +44,29 @@ let initialState = {
 
 const dialogPageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_MESSAGE: let message = {
-                message: state.newMessageText,
-                id: state.messages.length + 1
+        case ADD_MESSAGE: {
+            let copyState = { ...state };
+            copyState.messages = [...state.messages];
+
+            let message = {
+                message: copyState.newMessageText,
+                id: copyState.messages.length + 1
             };
 
-            state.messages.push(message);
+            copyState.messages.push(message);
 
-            state.newMessageText = '';
+            copyState.newMessageText = '';
 
-            return state;
-        case UPDATE_MESSAGE_TEXT: if (action.newText === undefined) 
+            return copyState;
+        }
+        case UPDATE_MESSAGE_TEXT: {
+            let copyState = { ...state };
+            if (action.newText === undefined)
                 alert("text is undefined")
-            
-            state.newMessageText = action.newText;
-            return state;
+
+                copyState.newMessageText = action.newText;
+            return copyState;
+        }
         default:
             return state;
     }
@@ -66,8 +74,8 @@ const dialogPageReducer = (state = initialState, action) => {
 }
 
 
-export const updateMessageTextActionCreator = (text) => ({type: UPDATE_MESSAGE_TEXT, newText: text});
+export const updateMessageTextActionCreator = (text) => ({ type: UPDATE_MESSAGE_TEXT, newText: text });
 
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
+export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
 
 export default dialogPageReducer;

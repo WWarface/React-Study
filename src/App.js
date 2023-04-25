@@ -6,8 +6,8 @@ import Music from './components/Music/Music';
 import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
-import SideBar from './components/SideBar/SideBar';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import SideBarContainer from './components/SideBar/SideBarContainer';
 
 const App = (props) => { 
   debugger
@@ -15,10 +15,10 @@ const App = (props) => {
       <div className='wrapper'>
         <Header />
         <div className='main-content-wrapper'>
-          <SideBar  friendsPage={props.store.getState().friendsPage}/>
+          <SideBarContainer  />
           <Routes>
-            <Route path='/profile' element={<Profile store={props.store} />}/>
-            <Route path='/dialogs/*' element={<DialogsContainer store={props.store}/>} />
+            <Route path='/profile' element={<Profile  />}/>
+            <Route path='/dialogs/*' element={<DialogsContainer />} />
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />

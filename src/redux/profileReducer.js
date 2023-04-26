@@ -19,27 +19,18 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST: {
-            let copyState = { ...state };
-            copyState.posts = [...state.posts]
-
-            let post = {
-                message: copyState.newPostMessage,
-                id: copyState.posts.length + 1
+        case ADD_POST: {            
+            return {
+                ...state,
+                posts: [...state.posts,{message: state.newPostMessage,id: state.posts.length + 1}],
+                newPostMessage: ''
             };
-
-            copyState.posts.push(post);
-
-            copyState.newPostMessage = '';
-
-            return copyState;
         }
-        case UPDATE_TEXT_POSTS: {
-            let copyState = { ...state };
-
-            if (action.newText === undefined) alert("text is undefined")
-                copyState.newPostMessage = action.newText;
-            return copyState;
+        case UPDATE_TEXT_POSTS: {     
+            return {
+                ...state,
+                newPostMessage: action.newText
+            };
         }
         default:
             return state;

@@ -54,6 +54,9 @@
     font-weight: 600;
 
     margin-left: auto;
+
+    
+    transition: background-color 0.5s ease;
 }
 
 .buttonUnfollow{
@@ -67,6 +70,8 @@
     font-weight: 600;
 
     margin-left: auto;
+
+    transition: background-color 0.5s ease;
 }
 
 .userWrapper{
@@ -74,4 +79,48 @@
     width: 636px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.pageButton{
+    width: 100px;
+    height: 30px;
+    margin: 0 10px 0 0;
+    background-color: #262626;
+    color: #fff;
+    background: none;
+    border: none;
+    box-shadow: none;
+
+    border-radius: 6px;
+
+    transition: background-color 0.3s ease;
+}
+
+.pageButton:hover{
+    background-color: #3c3c3c;
+}
+
+
+.buttonsWrapper{
+    margin: 0 auto;
+    margin-bottom: 25px;
+    width: 636px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.selectedPage{
+    background-color: #3c3c3c;
+    width: 100px;
+    height: 30px;
+    margin: 0 10px 0 0;
+    color: #fff;
+    border: none;
+    box-shadow: none;
+
+    border-radius: 6px;
+
+    transition: background-color 0.3s ease;
 }

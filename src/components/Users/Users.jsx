@@ -23,21 +23,28 @@ class Users extends React.Component {
     }
 
     render() {
-
+        const TOTAL_UI_BUTTONS_COUNT = 10;
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
 
         let pages = [];
         for (let i = 1; i <= pagesCount; i++) {
             pages.push(i);
         }
+        debugger
+        let curP = this.props.currentPage;
+        let curPF = ((curP - 5) < 0) ? 0 : curP - 5;
+        let curPL = curP + 5;
+        debugger
+        if(curPL<TOTAL_UI_BUTTONS_COUNT)curPL=TOTAL_UI_BUTTONS_COUNT;
+        let slicedPages = pages.slice(curPF, curPL);
         return (
 
 
             <div className={styles.wrapper}>
                 <div className={styles.buttonsWrapper}>
                     {
-                        pages.map(p => {
-                            return <button onClick={() => {this.onPageChanged(p);}} className={this.props.currentPage === p ? `${styles.selectedPage}` : `${styles.pageButton}`}>{p}</button>
+                        slicedPages.map(p => {
+                            return <button onClick={() => { this.onPageChanged(p); }} className={this.props.currentPage === p ? `${styles.selectedPage}` : `${styles.pageButton}`}>{p}</button>
                         })
                     }
                 </div>

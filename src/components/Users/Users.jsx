@@ -19,7 +19,7 @@ let Users = (props) => {
     
     if(curPL<TOTAL_UI_BUTTONS_COUNT)curPL=TOTAL_UI_BUTTONS_COUNT;
     let slicedPages = pages.slice(curPF, curPL);
-    debugger
+    
     return <div className={styles.wrapper}>
         <div className={styles.buttonsWrapper}>
             {

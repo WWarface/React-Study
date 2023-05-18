@@ -1,0 +1,12 @@
+
+  .infoHolder{
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .icon{
+    width: 35px;
+    height: 35px;
+    margin-right: 6px;
+  }

@@ -3,11 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import Music from './components/Music/Music';
-import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import SideBarContainer from './components/SideBar/SideBarContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 const App = (props) => { 
   return (
@@ -16,7 +16,7 @@ const App = (props) => {
         <div className='main-content-wrapper'>
           <SideBarContainer  />
           <Routes>
-            <Route path='/profile' element={<Profile  />}/>
+            <Route path='/profile/*' element={<ProfileContainer  />}/>
             <Route path='/dialogs/*' element={<DialogsContainer />} />
             <Route path='/users' element={<UsersContainer />} />
             <Route path='/music' element={<Music />} />

@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import axios from 'axios';
 import React from "react";
 import Preloader from "../common/Preloader/Preloader";
-debugger
 class UsersContainer extends React.Component {
 
     componentDidMount() {

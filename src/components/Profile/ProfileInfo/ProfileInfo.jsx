@@ -24,7 +24,7 @@ const ProfileInfo = (props) => {
         <div className={styles.profileContainer}>
             <div className={styles.pictureContainer}>
                 <img className={styles.picture} alt="Not found" src={
-                    props.profileInfo.photos.large ? img : 'https://virtus-img.cdnvideo.ru/images/og/plain/6c/6cb3e58326702d500847f61e932317b2.jpg'}></img>
+                    props.profileInfo.photos.large ? props.profileInfo.photos.large : img}></img>
             </div>
             <div className={styles.profileInfoContainer}>
                 <h3 className={styles.name}>{props.profileInfo.fullName ? props.profileInfo.fullName : "Pudge"}</h3>

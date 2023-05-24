@@ -16,7 +16,7 @@ const App = (props) => {
         <div className='main-content-wrapper'>
           <SideBarContainer  />
           <Routes>
-            <Route path='/profile/*' element={<ProfileContainer  />}/>
+            <Route path='/profile/:userId?' element={<ProfileContainer  />}/>
             <Route path='/dialogs/*' element={<DialogsContainer />} />
             <Route path='/users' element={<UsersContainer />} />
             <Route path='/music' element={<Music />} />

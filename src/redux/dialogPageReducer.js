@@ -45,27 +45,17 @@ let initialState = {
 const dialogPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE: {
-            let copyState = { ...state };
-            copyState.messages = [...state.messages];
-
-            let message = {
-                message: copyState.newMessageText,
-                id: copyState.messages.length + 1
+            return {
+                ...state,
+                newMessageText: '',
+                messages: [...state.messages,{message: state.newMessageText,id: state.messages.length + 1}]
             };
-
-            copyState.messages.push(message);
-
-            copyState.newMessageText = '';
-
-            return copyState;
         }
         case UPDATE_MESSAGE_TEXT: {
-            let copyState = { ...state };
-            if (action.newText === undefined)
-                alert("text is undefined")
-
-                copyState.newMessageText = action.newText;
-            return copyState;
+            return {
+                ...state,
+                newMessageText: action.newText
+            };
         }
         default:
             return state;

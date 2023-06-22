@@ -1,5 +1,6 @@
 const ADD_POST = "ADD_POST";
 const UPDATE_TEXT_POSTS = "UPDATE_TEXT_POSTS";
+const SET_PROFILE_INFO = "SET_PROFILE_INFO";
 
 let initialState = {
     posts: [
@@ -14,32 +15,30 @@ let initialState = {
             id: "2"
         }
     ],
-    newPostMessage: ''
+    newPostMessage: '',
+    profileInfo: null
 }
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST: {
-            let copyState = { ...state };
-            copyState.posts = [...state.posts]
-
-            let post = {
-                message: copyState.newPostMessage,
-                id: copyState.posts.length + 1
+        case ADD_POST: {            
+            return {
+                ...state,
+                posts: [...state.posts,{message: state.newPostMessage,id: state.posts.length + 1}],
+                newPostMessage: ''
             };
-
-            copyState.posts.push(post);
-
-            copyState.newPostMessage = '';
-
-            return copyState;
         }
-        case UPDATE_TEXT_POSTS: {
-            let copyState = { ...state };
-
-            if (action.newText === undefined) alert("text is undefined")
-                copyState.newPostMessage = action.newText;
-            return copyState;
+        case UPDATE_TEXT_POSTS: {     
+            return {
+                ...state,
+                newPostMessage: action.newText
+            };
+        }
+        case SET_PROFILE_INFO: {     
+            return {
+                ...state,
+                profileInfo: action.profileInfo
+            };
         }
         default:
             return state;
@@ -50,6 +49,8 @@ const profileReducer = (state = initialState, action) => {
 export const updatePostTextActionCreator = (text) => ({ type: UPDATE_TEXT_POSTS, newText: text });
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
+
+export const setProfileInfo = (profileInfo) => ({ type: SET_PROFILE_INFO, profileInfo});
 
 
 export default profileReducer;

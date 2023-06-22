@@ -3,6 +3,7 @@
     font-size: 34px;
     font-weight: 600;
     color: rgb(110, 109, 109);
+    margin-bottom: 18px;
   }
 
   .profileContainer {
@@ -18,8 +19,8 @@
   }
   
   .picture {
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     margin-left: 10px;
   }
 
@@ -30,4 +31,10 @@
   .profileInfoContainer{
     flex: 70%;
     padding-left: 15px;
+    padding-bottom: 15px;
   }
+
+
+
+
+  

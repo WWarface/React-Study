@@ -10,3 +10,15 @@
     border-width: 1px;
     border-style: solid;
   }
+
+  .loginContainer{
+    margin-left: auto;
+    width: 500px;
+    height: auto;
+  }
+
+  .headerContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }

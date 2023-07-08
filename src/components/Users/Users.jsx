@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './Users.module.css'
+import axios from 'axios';
 import userPhoto from '../../assets/images/NoAvatar.png'
 import { NavLink } from "react-router-dom";
 
@@ -38,9 +39,29 @@ let Users = (props) => {
                         <p className={styles.status}>{"u.location.city"}</p>
                         <p className={styles.info}>{"u.location.country"}</p>
                     </div>
-                    {u.isFollowed ?
-                        <button onClick={() => { props.follow(u.id) }} className={styles.buttonUnfollow}>UnFollow</button> :
-                        <button onClick={() => { props.unfollow(u.id) }} className={styles.buttonFollow}>Subscribe</button>}
+                    {u.followed ?
+                        <button onClick={() => {
+                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{
+                                withCredentials:true,
+                                headers: {
+                                    "API-KEY":"868a0dd9-a097-443d-9cf8-7cc1c9eeb484"
+                                }  
+                            }).then(response => {
+                                if(response.data.resultCode==0)props.unfollow(u.id)                     
+                            });                             
+                            }} className={styles.buttonUnfollow}>UnFollow</button> :
+                        <button onClick={() => {
+     
+                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},{
+                                withCredentials:true,
+                                headers: {
+                                    "API-KEY":"868a0dd9-a097-443d-9cf8-7cc1c9eeb484"
+                                }                                
+                            }).then(response => {
+                                debugger
+                                if(response.data.resultCode==0)props.follow(u.id)                     
+                            });                        
+                            }} className={styles.buttonFollow}>Subscribe</button>}
                 </div>
             </div>)
         }

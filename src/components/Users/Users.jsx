@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './Users.module.css'
-import axios from 'axios'
 import userPhoto from '../../assets/images/NoAvatar.png'
 import { NavLink } from 'react-router-dom'
 import { usersApi } from '../../api/api'
@@ -41,6 +40,7 @@ let Users = props => {
 					)
 				})}
 			</div>
+
 			{props.usersPage.users.map(u => (
 				<div key={u.id} className={styles.Wrapper}>
 					<div className={styles.userWrapper}>
@@ -57,9 +57,12 @@ let Users = props => {
 						</div>
 						{u.followed ? (
 							<button
+								disabled={props.isFollowing.some(id => id === u.id)}
 								onClick={() => {
+									props.toggleFollowing(true, u.id)
 									usersApi.serverSubscriptionDelete(u.id).then(data => {
 										if (data.resultCode == 0) props.unfollow(u.id)
+										props.toggleFollowing(false, u.id)
 									})
 								}}
 								className={styles.buttonUnfollow}
@@ -68,9 +71,12 @@ let Users = props => {
 							</button>
 						) : (
 							<button
+								disabled={props.isFollowing.some(id => id === u.id)}
 								onClick={() => {
+									props.toggleFollowing(true, u.id)
 									usersApi.serverSubscriptionPost(u.id).then(data => {
 										if (data.resultCode == 0) props.follow(u.id)
+										props.toggleFollowing(false, u.id)
 									})
 								}}
 								className={styles.buttonFollow}

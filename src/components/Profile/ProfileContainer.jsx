@@ -1,20 +1,19 @@
 import React from 'react'
-import axios from 'axios'
 import Profile from './Profile'
 import { connect } from 'react-redux'
-import { setProfileInfo } from '../../redux/profileReducer'
+import { getInfo, setProfileInfo } from '../../redux/profileReducer'
 import { withRouter } from './WithRouter'
-import { getProfileInfo } from '../../api/api'
+import { getUserInfo } from '../../api/api'
 
 class ProfileContainer extends React.Component {
 	componentDidMount() {
 		let userId = this.props.router.params.userId
-
 		if (!userId) userId = 2
-
-		getProfileInfo(userId).then(data => {
+		getUserInfo(userId).then(data => {
 			this.props.setProfileInfo(data)
 		})
+
+		// getInfo(userId) ?????????????????????????????????????????????
 	}
 
 	render() {

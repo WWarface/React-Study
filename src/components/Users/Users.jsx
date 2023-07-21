@@ -59,11 +59,12 @@ let Users = props => {
 							<button
 								disabled={props.isFollowing.some(id => id === u.id)}
 								onClick={() => {
-									props.toggleFollowing(true, u.id)
-									usersApi.serverSubscriptionDelete(u.id).then(data => {
-										if (data.resultCode == 0) props.unfollow(u.id)
-										props.toggleFollowing(false, u.id)
-									})
+									props.unFollow(u.id)
+									// props.toggleFollowing(true, u.id)
+									// usersApi.serverSubscriptionDelete(u.id).then(data => {
+									// 	if (data.resultCode == 0) props.unfollow(u.id)
+									// 	props.toggleFollowing(false, u.id)
+									// })
 								}}
 								className={styles.buttonUnfollow}
 							>
@@ -73,11 +74,7 @@ let Users = props => {
 							<button
 								disabled={props.isFollowing.some(id => id === u.id)}
 								onClick={() => {
-									props.toggleFollowing(true, u.id)
-									usersApi.serverSubscriptionPost(u.id).then(data => {
-										if (data.resultCode == 0) props.follow(u.id)
-										props.toggleFollowing(false, u.id)
-									})
+									props.follow(u.id)
 								}}
 								className={styles.buttonFollow}
 							>

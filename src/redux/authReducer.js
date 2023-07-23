@@ -31,8 +31,10 @@ export const setUserLoginData = (userId, login, email) => ({
 export const authenticate = () => {
 	return dispatch => {
 		authApi.authUser().then(data => {
-			let { id, login, email } = data.data
-			dispatch(setUserLoginData(id, login, email))
+			if (data.resultCode === 0) {
+				let { id, login, email } = data.data
+				dispatch(setUserLoginData(id, login, email))
+			}
 		})
 	}
 }

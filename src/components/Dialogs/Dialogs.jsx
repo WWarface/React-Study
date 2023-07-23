@@ -2,6 +2,7 @@ import React from 'react'
 import Dialog from './Dialog/Dialog'
 import s from './Dialogs.module.css'
 import Message from './Message/Message.jsx'
+import { Navigate } from 'react-router-dom'
 
 const Dialogs = props => {
 	let dialogsElements = props.dialogPage.dialogs.map(d => (
@@ -22,6 +23,8 @@ const Dialogs = props => {
 		let text = newPostElement.current.value
 		props.updateMessageText(text)
 	}
+
+	if (!props.isLogged) return <Navigate to={'/login'} />
 
 	return (
 		<div className={s.wrapper}>

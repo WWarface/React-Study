@@ -66,11 +66,7 @@ export const setProfileInfo = profileInfo => ({
 
 export const getInfo = userId => {
 	return dispatch => {
-		let Id = userId
-
-		if (!Id) Id = 2
-
-		getUserInfo(Id).then(data => {
+		getUserInfo(userId).then(data => {
 			dispatch(setProfileInfo(data))
 		})
 	}

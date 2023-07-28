@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './ProfileInfo.module.css'
+import s from './ProfileInfo.module.css'
 import Preloader from '../../common/Preloader/Preloader'
 
 import img from '../../../assets/images/noAvatarInverted.png'
@@ -11,6 +11,7 @@ import youtubeImg from '../../../assets/images/youtube.png'
 import gitHubImg from '../../../assets/images/github.png'
 
 import SingleInfo from './SingleInfo/SingleInfo'
+import Status from './Status/Status'
 
 const ProfileInfo = props => {
 	if (!props.profileInfo) {
@@ -18,10 +19,10 @@ const ProfileInfo = props => {
 	}
 
 	return (
-		<div className={styles.profileContainer}>
-			<div className={styles.pictureContainer}>
+		<div className={s.profileContainer}>
+			<div className={s.pictureContainer}>
 				<img
-					className={styles.picture}
+					className={s.picture}
 					alt='Not found'
 					src={
 						props.profileInfo.photos.large
@@ -30,10 +31,12 @@ const ProfileInfo = props => {
 					}
 				></img>
 			</div>
-			<div className={styles.profileInfoContainer}>
-				<h3 className={styles.name}>
+			<div className={s.profileInfoContainer}>
+				<h3 className={s.name}>
 					{props.profileInfo.fullName ? props.profileInfo.fullName : 'Pudge'}
 				</h3>
+
+				<Status updateStatus={props.updateStatus} status={props.status} />
 
 				{props.profileInfo.aboutMe ? (
 					<SingleInfo info={props.profileInfo.aboutMe} icon={aboutImg} />

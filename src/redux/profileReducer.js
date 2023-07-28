@@ -1,8 +1,9 @@
-import { getUserInfo } from '../api/api'
+import { getUserInfo, profileApi } from '../api/api'
 
 const ADD_POST = 'ADD_POST'
 const UPDATE_TEXT_POSTS = 'UPDATE_TEXT_POSTS'
 const SET_PROFILE_INFO = 'SET_PROFILE_INFO'
+const SET_STATUS = 'SET_STATUS'
 
 let initialState = {
 	posts: [
@@ -20,7 +21,8 @@ let initialState = {
 		}
 	],
 	newPostMessage: '',
-	profileInfo: null
+	profileInfo: null,
+	status: ''
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -47,6 +49,12 @@ const profileReducer = (state = initialState, action) => {
 				profileInfo: action.profileInfo
 			}
 		}
+		case SET_STATUS: {
+			return {
+				...state,
+				status: action.status
+			}
+		}
 		default:
 			return state
 	}
@@ -64,10 +72,33 @@ export const setProfileInfo = profileInfo => ({
 	profileInfo
 })
 
+export const setStatus = status => ({
+	type: SET_STATUS,
+	status
+})
+
 export const getInfo = userId => {
 	return dispatch => {
 		getUserInfo(userId).then(data => {
 			dispatch(setProfileInfo(data))
+		})
+	}
+}
+
+export const getStatus = userId => {
+	return dispatch => {
+		profileApi.getStatus(userId).then(data => {
+			if (data.data) dispatch(setStatus(data.data))
+		})
+	}
+}
+
+export const updateStatus = status => {
+	return dispatch => {
+		profileApi.updateStatus(status).then(data => {
+			if (data.data.resultCode === 0) {
+				dispatch(setStatus(status.status))
+			}
 		})
 	}
 }

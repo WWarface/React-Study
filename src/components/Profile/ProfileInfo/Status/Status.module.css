@@ -1,0 +1,45 @@
+.status {
+	margin-bottom: 13px;
+	display: flex;
+}
+
+.status span {
+	opacity: 35%;
+}
+
+.editPicture {
+	width: 30px;
+}
+
+.editContainer {
+	margin-left: 8px;
+}
+
+.buttonEdit {
+	border: medium none;
+	background-image: none;
+	background: transparent;
+	float: left;
+	background-color: transparent;
+}
+
+.input {
+	background-color: black;
+	color: #fff;
+	height: 28px;
+	width: 256px;
+	font-size: 22px;
+	font-family: 'Poppins', sans-serif;
+}
+
+.buttonSend {
+	border: medium none;
+	background-image: none;
+	background: transparent;
+	float: left;
+	background-color: transparent;
+}
+
+.inputContainer {
+	margin-left: 8px;
+}

@@ -1,40 +1,35 @@
 .name {
-    margin-top: 0;
-    font-size: 34px;
-    font-weight: 600;
-    color: rgb(110, 109, 109);
-    margin-bottom: 18px;
-  }
+	margin-top: 0;
+	font-size: 34px;
+	font-weight: 600;
+	color: rgb(110, 109, 109);
+	margin-bottom: 5px;
+}
 
-  .profileContainer {
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    border: #363636;
-    border-style: solid;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-right-width: 0px;
-    border-left-width: 0px;
-  }
-  
-  .picture {
-    width: 250px;
-    height: 250px;
-    margin-left: 10px;
-  }
+.profileContainer {
+	height: auto;
+	display: flex;
+	flex-direction: row;
+	border: #363636;
+	border-style: solid;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-right-width: 0px;
+	border-left-width: 0px;
+}
 
-  .pictureContainer{
-    flex: 30%;
-  }
+.picture {
+	width: 250px;
+	height: 250px;
+	margin-left: 10px;
+}
 
-  .profileInfoContainer{
-    flex: 70%;
-    padding-left: 15px;
-    padding-bottom: 15px;
-  }
+.pictureContainer {
+	flex: 30%;
+}
 
-
-
-
-  
+.profileInfoContainer {
+	flex: 70%;
+	padding-left: 15px;
+	padding-bottom: 15px;
+}

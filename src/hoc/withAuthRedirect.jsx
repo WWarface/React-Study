@@ -11,7 +11,6 @@ let mapStateToProps = state => {
 export const withAuthRedirect = Component => {
 	class ComponentWrapper extends React.Component {
 		render() {
-			debugger
 			if (!this.props.isLogged) return <Navigate to={'/login'} />
 
 			return <Component {...this.props} />

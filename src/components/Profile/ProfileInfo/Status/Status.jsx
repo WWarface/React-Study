@@ -36,13 +36,21 @@ export class Status extends React.Component {
 		})
 	}
 
+	componentDidUpdate(prevProps, prevState) {
+		if (this.props.status !== prevProps.status) {
+			this.setState({
+				status: this.props.status
+			})
+		}
+	}
+
 	render() {
 		return (
 			<>
 				<div className={s.status}>
 					{this.state.editMode ? (
 						<>
-							<div onBlur={this.editModeDisable}>
+							<div>
 								<input
 									type='text'
 									value={this.state.status}

@@ -2,7 +2,7 @@ import React from 'react'
 import Dialog from './Dialog/Dialog'
 import s from './Dialogs.module.css'
 import Message from './Message/Message.jsx'
-import { Navigate } from 'react-router-dom'
+import { Field, reduxForm } from 'redux-form'
 
 const Dialogs = props => {
 	let dialogsElements = props.dialogPage.dialogs.map(d => (
@@ -13,18 +13,9 @@ const Dialogs = props => {
 		<Message message={m.message} key={m.id} />
 	))
 
-	let newPostElement = React.createRef()
-
-	let onAddPost = () => {
-		props.addMessage()
+	let AddPost = formData => {
+		props.addMessage(formData.textArea)
 	}
-
-	let onUpdateText = () => {
-		let text = newPostElement.current.value
-		props.updateMessageText(text)
-	}
-
-	if (!props.isLogged) return <Navigate to={'/login'} />
 
 	return (
 		<div className={s.wrapper}>
@@ -32,19 +23,24 @@ const Dialogs = props => {
 			<div className={s.messages}>
 				{messageElements}
 				<div className={s.submissionContainer}>
-					<textarea
-						ref={newPostElement}
-						className={s.textArea}
-						onChange={onUpdateText}
-						value={props.dialogPage.newMessageText}
-					/>
-					<button onClick={onAddPost} className={s.textAreaButton}>
-						Send Message
-					</button>
+					<DialogsReduxForm onSubmit={AddPost} />
 				</div>
 			</div>
 		</div>
 	)
 }
+
+const DialogsForm = props => {
+	return (
+		<form onSubmit={props.handleSubmit}>
+			<Field name='textArea' component='textarea' className={s.textArea} />
+			<button className={s.textAreaButton}>Send Message</button>
+		</form>
+	)
+}
+
+const DialogsReduxForm = reduxForm({
+	form: 'dialogsForm'
+})(DialogsForm)
 
 export default Dialogs

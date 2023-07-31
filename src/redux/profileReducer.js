@@ -1,7 +1,6 @@
 import { getUserInfo, profileApi } from '../api/api'
 
 const ADD_POST = 'ADD_POST'
-const UPDATE_TEXT_POSTS = 'UPDATE_TEXT_POSTS'
 const SET_PROFILE_INFO = 'SET_PROFILE_INFO'
 const SET_STATUS = 'SET_STATUS'
 
@@ -20,7 +19,6 @@ let initialState = {
 			id: '2'
 		}
 	],
-	newPostMessage: '',
 	profileInfo: null,
 	status: ''
 }
@@ -32,15 +30,9 @@ const profileReducer = (state = initialState, action) => {
 				...state,
 				posts: [
 					...state.posts,
-					{ message: state.newPostMessage, id: state.posts.length + 1 }
+					{ message: action.postMessage, id: state.posts.length + 1 }
 				],
 				newPostMessage: ''
-			}
-		}
-		case UPDATE_TEXT_POSTS: {
-			return {
-				...state,
-				newPostMessage: action.newText
 			}
 		}
 		case SET_PROFILE_INFO: {
@@ -60,12 +52,7 @@ const profileReducer = (state = initialState, action) => {
 	}
 }
 
-export const updatePostText = text => ({
-	type: UPDATE_TEXT_POSTS,
-	newText: text
-})
-
-export const addPost = () => ({ type: ADD_POST })
+export const addPost = postMessage => ({ type: ADD_POST, postMessage })
 
 export const setProfileInfo = profileInfo => ({
 	type: SET_PROFILE_INFO,

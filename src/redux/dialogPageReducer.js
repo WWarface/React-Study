@@ -1,5 +1,4 @@
 const ADD_MESSAGE = 'ADD_MESSAGE'
-const UPDATE_MESSAGE_TEXT = 'UPDATE_MESSAGE_TEXT'
 
 let initialState = {
 	dialogs: [
@@ -42,9 +41,7 @@ let initialState = {
 			message: 'Ubili nekra!',
 			id: '2'
 		}
-	],
-
-	newMessageText: 'type text here'
+	]
 }
 
 const dialogPageReducer = (state = initialState, action) => {
@@ -55,14 +52,8 @@ const dialogPageReducer = (state = initialState, action) => {
 				newMessageText: '',
 				messages: [
 					...state.messages,
-					{ message: state.newMessageText, id: state.messages.length + 1 }
+					{ message: action.messageText, id: state.messages.length + 1 }
 				]
-			}
-		}
-		case UPDATE_MESSAGE_TEXT: {
-			return {
-				...state,
-				newMessageText: action.newText
 			}
 		}
 		default:
@@ -70,11 +61,6 @@ const dialogPageReducer = (state = initialState, action) => {
 	}
 }
 
-export const updateMessageText = text => ({
-	type: UPDATE_MESSAGE_TEXT,
-	newText: text
-})
-
-export const addMessage = () => ({ type: ADD_MESSAGE })
+export const addMessage = messageText => ({ type: ADD_MESSAGE, messageText })
 
 export default dialogPageReducer

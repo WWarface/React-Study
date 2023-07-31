@@ -39,6 +39,15 @@ export const profileApi = {
 	}
 }
 
+export const loginApi = {
+	login(credentials) {
+		return instance.post('/auth/login/', credentials)
+	},
+	unLogin(credentials) {
+		return instance.delete('/auth/login')
+	}
+}
+
 export const getUserInfo = userId => {
 	return axios
 		.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)

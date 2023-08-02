@@ -1,3 +1,5 @@
+import { requiredField } from '../../utils/validators'
+import { FormControls } from '../common/FormControls/FormControls'
 import s from './login.module.css'
 import { Field, reduxForm } from 'redux-form'
 
@@ -18,10 +20,23 @@ const LoginForm = props => {
 		<form onSubmit={props.handleSubmit}>
 			<h1>Login</h1>
 			<div>
-				<Field placeholder={'Login'} component={'input'} name='login' /> Login
+				<Field
+					placeholder={'Login'}
+					component={FormControls}
+					name='login'
+					validate={requiredField}
+					child='input'
+				/>{' '}
+				Login
 			</div>
 			<div>
-				<Field placeholder={'Password'} component={'input'} name='password' />{' '}
+				<Field
+					placeholder={'Password'}
+					component={FormControls}
+					name='password'
+					validate={requiredField}
+					child='input'
+				/>{' '}
 				password
 			</div>
 			<div>

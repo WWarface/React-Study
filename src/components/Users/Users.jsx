@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './Users.module.css'
 import userPhoto from '../../assets/images/NoAvatar.png'
 import { NavLink } from 'react-router-dom'
-import { usersApi } from '../../api/api'
 
 let Users = props => {
 	const TOTAL_UI_BUTTONS_COUNT = 10
@@ -48,6 +47,7 @@ let Users = props => {
 							<img
 								src={u.photos.small != null ? u.photos.small : userPhoto}
 								className={styles.ava}
+								alt='no img('
 							></img>
 						</NavLink>
 						<div className={styles.description}>
@@ -60,11 +60,6 @@ let Users = props => {
 								disabled={props.isFollowing.some(id => id === u.id)}
 								onClick={() => {
 									props.unFollow(u.id)
-									// props.toggleFollowing(true, u.id)
-									// usersApi.serverSubscriptionDelete(u.id).then(data => {
-									// 	if (data.resultCode == 0) props.unfollow(u.id)
-									// 	props.toggleFollowing(false, u.id)
-									// })
 								}}
 								className={styles.buttonUnfollow}
 							>

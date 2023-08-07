@@ -1,12 +1,18 @@
+import { connect } from 'react-redux'
 import { requiredField } from '../../utils/validators'
 import { FormControls } from '../common/FormControls/FormControls'
 import s from './login.module.css'
 import { Field, reduxForm } from 'redux-form'
+import { login } from '../../redux/authReducer'
+import { Navigate } from 'react-router-dom'
 
 const Login = props => {
 	const onSubmit = formData => {
 		console.log(formData)
+		props.login(formData.email, formData.password, formData.rememberMe)
 	}
+
+	if (props.isLogged) return <Navigate to={'/profile'} />
 
 	return (
 		<div className={s.loginWrapper}>
@@ -21,9 +27,9 @@ const LoginForm = props => {
 			<h1>Login</h1>
 			<div>
 				<Field
-					placeholder={'Login'}
+					placeholder={'Email'}
 					component={FormControls}
-					name='login'
+					name='email'
 					validate={requiredField}
 					child='input'
 				/>{' '}
@@ -36,6 +42,7 @@ const LoginForm = props => {
 					name='password'
 					validate={requiredField}
 					child='input'
+					type={'password'}
 				/>{' '}
 				password
 			</div>
@@ -59,4 +66,8 @@ const LoginReduxForm = reduxForm({
 	form: 'login'
 })(LoginForm)
 
-export default Login
+let mapDispatchToProps = state => ({
+	isLogged: state.auth.isLogged
+})
+
+export default connect(mapDispatchToProps, { login })(Login)

@@ -27,6 +27,14 @@ export const usersApi = {
 export const authApi = {
 	authUser() {
 		return instance.get('auth/me').then(response => response.data)
+	},
+	login(credentials) {
+		return instance
+			.post('/auth/login/', credentials)
+			.then(response => response.data)
+	},
+	logout() {
+		return instance.delete('/auth/login').then(response => response.data)
 	}
 }
 
@@ -36,15 +44,6 @@ export const profileApi = {
 	},
 	updateStatus(status) {
 		return instance.put('/profile/status', status)
-	}
-}
-
-export const loginApi = {
-	login(credentials) {
-		return instance.post('/auth/login/', credentials)
-	},
-	unLogin(credentials) {
-		return instance.delete('/auth/login')
 	}
 }
 

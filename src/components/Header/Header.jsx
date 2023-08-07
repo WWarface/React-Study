@@ -10,7 +10,12 @@ const Header = props => {
 				alt='No img'
 			></img>
 			{props.isAuth ? (
-				<div с={s.loginContainer}>{props.login}</div>
+				<>
+					<div className={s.loginContainer}>{props.login}</div>
+					<div className={s.logoutContainer} onClick={props.logout}>
+						Logout
+					</div>
+				</>
 			) : (
 				<div с={s.loginContainer}>Login</div>
 			)}

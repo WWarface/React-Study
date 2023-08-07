@@ -4,5 +4,5 @@ export const requiredField = value => {
 }
 
 export const maxLengthField = maxLength => value => {
-	if (value.length > maxLength) return 'maximum field length is ${maxLength}'
+	if (value.length > maxLength) return `maximum field length is ${maxLength}`
 }

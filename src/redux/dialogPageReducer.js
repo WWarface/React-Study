@@ -30,15 +30,15 @@ let initialState = {
 
 	messages: [
 		{
-			message: 'Hi negros!',
+			message: 'Hi everyone!',
 			id: '0'
 		},
 		{
-			message: 'Hi negros AXE!',
+			message: 'Hi im Alex!',
 			id: '1'
 		},
 		{
-			message: 'Ubili nekra!',
+			message: 'I like sushi!!!!!',
 			id: '2'
 		}
 	]

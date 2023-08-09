@@ -47,7 +47,7 @@ let Users = props => {
 							<img
 								src={u.photos.small != null ? u.photos.small : userPhoto}
 								className={styles.ava}
-								alt='no img('
+								alt='no img(nop'
 							></img>
 						</NavLink>
 						<div className={styles.description}>

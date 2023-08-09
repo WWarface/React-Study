@@ -13,7 +13,7 @@ let initialState = {
 		{
 			id: '2',
 			name: 'Ivakhiv1',
-			url: 'https://preview.redd.it/this-looks-like-irl-uncle-kesseli-v0-ye2ppfghqmj81.jpg?auto=webp&s=bdd454d4df1340c951c1401f852c4b972d92aae3'
+			url: 'https://i.pinimg.com/564x/63/ac/08/63ac08dd8de7467a292a32b86b6548b4.jpg'
 		},
 		{
 			id: '3',

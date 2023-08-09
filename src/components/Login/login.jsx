@@ -32,6 +32,7 @@ const LoginForm = props => {
 					name='email'
 					validate={requiredField}
 					child='input'
+					className={s.input}
 				/>{' '}
 				Login
 			</div>
@@ -43,6 +44,7 @@ const LoginForm = props => {
 					validate={requiredField}
 					child='input'
 					type={'password'}
+					className={s.input}
 				/>{' '}
 				password
 			</div>
@@ -55,8 +57,15 @@ const LoginForm = props => {
 				/>{' '}
 				remember me
 			</div>
+			{props.error ? (
+				<div className={s.errorContainer}>
+					<span className={s.errorMessage}>{props.error}</span>
+				</div>
+			) : (
+				''
+			)}
 			<div>
-				<button>Login</button>
+				<button className={s.loginButton}>Login</button>
 			</div>
 		</form>
 	)

@@ -10,6 +10,7 @@ import usersReducer from './usersPageReducer'
 import authReducer from './authReducer'
 import thunk from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form'
+import appReducer from './appReducer'
 
 let reducers = combineReducers({
 	profilePage: profileReducer,
@@ -17,6 +18,7 @@ let reducers = combineReducers({
 	friendsPage: friendsReducer,
 	usersPage: usersReducer,
 	auth: authReducer,
+	app: appReducer,
 	form: formReducer
 })
 

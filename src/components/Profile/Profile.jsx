@@ -1,18 +1,24 @@
-import React from 'react';
-import PostsContainer from './Posts/PostsContainer';
+import React from 'react'
+import PostsContainer from './Posts/PostsContainer'
 import s from './Profile.module.css'
-import ProfileInfo from './ProfileInfo/ProfileInfo';
+import ProfileInfo from './ProfileInfo/ProfileInfo'
 
-
-const Profile = (props) => {
-    
-    return (
-        <div className={s.content}>
-            <img className={s.contentImage} src='https://i.ytimg.com/vi/V33G0n7dQVA/maxresdefault.jpg' />
-            <ProfileInfo profileInfo={props.profileInfo}/>
-            <PostsContainer />
-        </div>
-    );
+const Profile = props => {
+	return (
+		<div className={s.content}>
+			<img
+				className={s.contentImage}
+				src='https://i.ytimg.com/vi/V33G0n7dQVA/maxresdefault.jpg'
+				alt='no img :('
+			/>
+			<ProfileInfo
+				updateStatus={props.updateStatus}
+				status={props.status}
+				profileInfo={props.profileInfo}
+			/>
+			<PostsContainer />
+		</div>
+	)
 }
 
-export default Profile;
+export default Profile

@@ -1,0 +1,13 @@
+.error {
+	border: 5px solid red;
+}
+
+.formControl {
+	display: flex;
+	width: 540px;
+}
+
+.errorText {
+	margin-left: 5px;
+	color: rgb(233, 40, 40);
+}

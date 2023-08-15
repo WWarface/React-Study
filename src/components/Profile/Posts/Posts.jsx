@@ -5,23 +5,31 @@ import { Field, reduxForm } from 'redux-form'
 import { FormControls } from '../../common/FormControls/FormControls'
 import { requiredField } from '../../../utils/validators'
 
-const Posts = props => {
-	let postsElements = props.profilePage.posts.map(p => (
-		<Post key={p.id} message={p.message} />
-	))
+const Posts = React.memo(
+	props => {
+		console.log('POSTS')
 
-	let addPost = formData => {
-		props.addPost(formData.textArea)
+		let postsElements = props.profilePage.posts.map(p => (
+			<Post key={p.id} message={p.message} />
+		))
+
+		let addPost = formData => {
+			props.addPost(formData.textArea)
+		}
+
+		return (
+			<div className={s.postsContainer}>
+				<h3 className={s.text}>My posts</h3>
+				<PostsReduxForm onSubmit={addPost} />
+				{postsElements}
+			</div>
+		)
+	},
+	(props, nextProps) => {
+		// Возвращаем true, если пропсы profilePage.posts не изменились
+		return props.profilePage.posts === nextProps.profilePage.posts
 	}
-
-	return (
-		<div className={s.postsContainer}>
-			<h3 className={s.text}>My posts</h3>
-			<PostsReduxForm onSubmit={addPost} />
-			{postsElements}
-		</div>
-	)
-}
+)
 
 const PostsForm = props => {
 	return (

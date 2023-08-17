@@ -5,6 +5,7 @@ import { getInfo, getStatus, updateStatus } from '../../redux/profileReducer'
 import { withRouter } from './WithRouter'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 import { compose } from 'redux'
+import { Navigate } from 'react-router-dom'
 
 class ProfileContainer extends React.Component {
 	componentDidMount() {
@@ -13,6 +14,7 @@ class ProfileContainer extends React.Component {
 			userId = this.props.userId
 			if (!userId) {
 				this.props.history.push('/login') //bad solution ((
+				// return <Navigate to='/login'/>
 			}
 		}
 		this.props.getInfo(userId)

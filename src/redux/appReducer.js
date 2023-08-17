@@ -24,11 +24,9 @@ export const authenticateAc = () => ({
 })
 
 export const InitializeApp = () => {
-	return dispatch => {
-		let promise = dispatch(authenticate())
-		promise.then(() => {
-			dispatch(authenticateAc())
-		})
+	return async dispatch => {
+		await dispatch(authenticate())
+		dispatch(authenticateAc())
 	}
 }
 

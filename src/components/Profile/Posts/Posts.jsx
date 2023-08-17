@@ -26,7 +26,6 @@ const Posts = React.memo(
 		)
 	},
 	(props, nextProps) => {
-		// Возвращаем true, если пропсы profilePage.posts не изменились
 		return props.profilePage.posts === nextProps.profilePage.posts
 	}
 )

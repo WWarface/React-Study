@@ -1,7 +1,8 @@
 import {
 	combineReducers,
 	legacy_createStore as createStore,
-	applyMiddleware
+	applyMiddleware,
+	compose
 } from 'redux'
 import dialogPageReducer from './dialogPageReducer'
 import profileReducer from './profileReducer'
@@ -10,6 +11,7 @@ import usersReducer from './usersPageReducer'
 import authReducer from './authReducer'
 import thunk from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form'
+import appReducer from './appReducer'
 
 let reducers = combineReducers({
 	profilePage: profileReducer,
@@ -17,10 +19,12 @@ let reducers = combineReducers({
 	friendsPage: friendsReducer,
 	usersPage: usersReducer,
 	auth: authReducer,
+	app: appReducer,
 	form: formReducer
 })
 
-let store = createStore(reducers, applyMiddleware(thunk))
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
 
 window.store = store
 

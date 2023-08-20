@@ -5,6 +5,15 @@ import React from 'react'
 import Preloader from '../common/Preloader/Preloader'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 import { compose } from 'redux'
+import {
+	getCurrentPage,
+	getIsFetching,
+	getIsFollowing,
+	getIsLogged,
+	getPageSize,
+	getTotalUsersCount,
+	getUsersPage
+} from '../../redux/Selectors/UsersSelectors'
 class UsersContainer extends React.Component {
 	componentDidMount() {
 		this.props.getUsers(
@@ -41,18 +50,17 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = state => {
 	return {
-		usersPage: state.usersPage,
-		pageSize: state.usersPage.pageSize,
-		totalUsersCount: state.usersPage.totalUsersCount,
-		currentPage: state.usersPage.currentPage,
-		isFetching: state.usersPage.isFetching,
-		isFollowing: state.usersPage.isFollowing,
-		isLogged: state.auth.isLogged
+		usersPage: getUsersPage(state),
+		pageSize: getPageSize(state),
+		totalUsersCount: getTotalUsersCount(state),
+		currentPage: getCurrentPage(state),
+		isFetching: getIsFetching(state),
+		isFollowing: getIsFollowing(state),
+		isLogged: getIsLogged(state)
 	}
 }
 
 export default compose(
-	withAuthRedirect,
 	connect(mapStateToProps, {
 		getUsers,
 		unFollow,

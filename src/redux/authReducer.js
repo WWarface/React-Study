@@ -1,3 +1,4 @@
+import { stopSubmit } from 'redux-form'
 import { authApi } from '../api/api'
 
 const SET_USER_LOGIN_DATA = 'SET_USER_LOGIN_DATA'
@@ -28,34 +29,33 @@ export const setUserLoginData = (userId, login, email, isLogged) => ({
 })
 
 export const authenticate = () => {
-	return dispatch => {
-		authApi.authUser().then(data => {
-			if (data.resultCode === 0) {
-				let { id, login, email } = data.data
-				dispatch(setUserLoginData(id, login, email, true))
-			}
-		})
+	return async dispatch => {
+		let data = await authApi.authUser()
+		if (data.resultCode === 0) {
+			let { id, login, email } = data.data
+			dispatch(setUserLoginData(id, login, email, true))
+		}
+		return data
 	}
 }
 
 export const login = (email, password, rememberMe) => {
-	return dispatch => {
-		authApi.login({ email, password, rememberMe }).then(data => {
-			if (data.resultCode === 0) {
-				debugger
-				dispatch(authenticate())
-			}
-		})
+	return async dispatch => {
+		let data = await authApi.login({ email, password, rememberMe })
+		if (data.resultCode === 0) {
+			dispatch(authenticate())
+		}
+		let message = data.messages.length > 0 ? data.messages[0] : 'Some error'
+		dispatch(stopSubmit('login', { _error: message }))
 	}
 }
 
 export const logout = () => {
-	return dispatch => {
-		authApi.logout().then(data => {
-			if (data.resultCode === 0) {
-				dispatch(setUserLoginData(null, null, null, false))
-			}
-		})
+	return async dispatch => {
+		let data = await authApi.logout()
+		if (data.resultCode === 0) {
+			dispatch(setUserLoginData(null, null, null, false))
+		}
 	}
 }
 

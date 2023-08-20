@@ -65,28 +65,25 @@ export const setStatus = status => ({
 })
 
 export const getInfo = userId => {
-	return dispatch => {
-		getUserInfo(userId).then(data => {
-			dispatch(setProfileInfo(data))
-		})
+	return async dispatch => {
+		let data = await getUserInfo(userId)
+		dispatch(setProfileInfo(data))
 	}
 }
 
 export const getStatus = userId => {
-	return dispatch => {
-		profileApi.getStatus(userId).then(data => {
-			if (data.data) dispatch(setStatus(data.data))
-		})
+	return async dispatch => {
+		let data = await profileApi.getStatus(userId)
+		if (data.data) dispatch(setStatus(data.data))
 	}
 }
 
 export const updateStatus = status => {
-	return dispatch => {
-		profileApi.updateStatus(status).then(data => {
-			if (data.data.resultCode === 0) {
-				dispatch(setStatus(status.status))
-			}
-		})
+	return async dispatch => {
+		let data = await profileApi.updateStatus(status)
+		if (data.data.resultCode === 0) {
+			dispatch(setStatus(status.status))
+		}
 	}
 }
 

@@ -1,4 +1,5 @@
 import { usersApi } from '../api/api'
+import { updateObjectInArray } from '../utils/objectChanger'
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -22,28 +23,16 @@ const usersReducer = (state = initialState, action) => {
 		case FOLLOW: {
 			return {
 				...state,
-				users: state.users.map(u => {
-					if (u.id === action.userId) {
-						return {
-							...u,
-							followed: true
-						}
-					}
-					return u
+				users: updateObjectInArray(state.users, action.userId, 'id', {
+					followed: true
 				})
 			}
 		}
 		case UNFOLLOW: {
 			return {
 				...state,
-				users: state.users.map(u => {
-					if (u.id === action.userId) {
-						return {
-							...u,
-							followed: false
-						}
-					}
-					return u
+				users: updateObjectInArray(state.users, action.userId, 'id', {
+					followed: false
 				})
 			}
 		}
@@ -76,7 +65,7 @@ const usersReducer = (state = initialState, action) => {
 				...state,
 				isFollowing: action.toggle
 					? [...state.isFollowing, action.userId]
-					: state.isFollowing.filter(id => id != action.userId)
+					: state.isFollowing.filter(id => id !== action.userId)
 			}
 		}
 		default:
@@ -109,35 +98,43 @@ export const toggleFollowing = (isFollowing, userId) => ({
 })
 
 export const getUsers = (currentPage, pageSize) => {
-	return dispatch => {
+	return async dispatch => {
 		dispatch(toggleFetching(true))
-		usersApi.getUsers(currentPage, pageSize).then(data => {
-			dispatch(setCurrentPage(currentPage))
-			dispatch(toggleFetching(false))
-			dispatch(setUsers(data.items))
-			dispatch(setTotalCount(data.totalCount))
-		})
+		let data = await usersApi.getUsers(currentPage, pageSize)
+		dispatch(setCurrentPage(currentPage))
+		dispatch(toggleFetching(false))
+		dispatch(setUsers(data.items))
+		dispatch(setTotalCount(data.totalCount))
 	}
 }
 
 export const unFollow = userId => {
-	return dispatch => {
-		dispatch(toggleFollowing(true, userId))
-		usersApi.serverSubscriptionDelete(userId).then(data => {
-			if (data.resultCode == 0) dispatch(makeUnfollow(userId))
-			dispatch(toggleFollowing(false, userId))
-		})
+	return async dispatch => {
+		makeSubUnSubOperation(
+			dispatch,
+			userId,
+			makeUnfollow,
+			usersApi.serverSubscriptionDelete.bind(usersApi)
+		)
 	}
 }
 
 export const follow = userId => {
-	return dispatch => {
-		dispatch(toggleFollowing(true, userId))
-		usersApi.serverSubscriptionPost(userId).then(data => {
-			if (data.resultCode == 0) dispatch(makeFollow(userId))
-			dispatch(toggleFollowing(false, userId))
-		})
+	return async dispatch => {
+		makeSubUnSubOperation(
+			dispatch,
+			userId,
+			makeFollow,
+			usersApi.serverSubscriptionPost.bind(usersApi)
+		)
 	}
+}
+
+const makeSubUnSubOperation = async (dispatch, userId, action, apiMethod) => {
+	dispatch(toggleFollowing(true, userId))
+	let data = await apiMethod(userId)
+	if (data.resultCode === 0) dispatch(action(userId))
+	dispatch(toggleFollowing(false, userId))
 }
 
 export default usersReducer

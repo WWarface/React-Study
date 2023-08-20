@@ -1,39 +1,78 @@
 .text {
-    margin-top: 0;
-    font-size: 34px;
-    font-weight: 600;
-    color: rgb(110, 109, 109);
+	margin-top: 0;
+	font-size: 34px;
+	font-weight: 600;
+	color: rgb(110, 109, 109);
 }
 
 .button {
-    width: 134px;
-    height: 30px;
-    margin: 10px;
+	width: 134px;
+	height: 30px;
+	margin: 10px;
 
-    background-color: rgb(14, 165, 82);
-    color: wheat;
-    font-size: 20px;
+	background-color: rgb(14, 165, 82);
+	color: wheat;
+	font-size: 20px;
 
-    margin: 15px 0 0 auto;
-    text-align: left;
-    padding-left: 12px;
+	margin: 15px 0 0 auto;
+	text-align: left;
+	padding-left: 12px;
 }
 
 .postsContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 45px;
-    margin-left: 10px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 45px;
+	margin-left: 10px;
 }
 
 .input {
-    height: 65px;
+	height: 65px;
 
-    background-color: rgb(207, 207, 207);
-    border: none;
+	background-color: rgb(207, 207, 207);
+	border: none;
 
-    font-size: 20px;
-    text-align: left;
-    color: rgb(182, 182, 182);
-    padding: 5px 0 5px 15px;
+	font-size: 20px;
+	text-align: left;
+	color: rgb(182, 182, 182);
+	padding: 5px 0 5px 15px;
+}
+
+.textArea {
+	background-color: #fafafa;
+	border: 1px solid #e0e0e0;
+	border-radius: 5px;
+	padding: 10px;
+	width: 250px;
+	font-size: 16px;
+	color: #262626;
+	outline: none;
+	transition: border-color 0.3s ease;
+}
+
+.textArea:focus {
+	border-color: #0095f6;
+}
+
+.textAreaButton {
+	margin-top: 10px;
+
+	background-color: #0074d9;
+	height: 30px;
+	color: #ffffff;
+	padding: 0 20px;
+
+	text-align: center;
+
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.textAreaButton:hover {
+	background-color: #0056b3;
+	color: #ffffff;
 }

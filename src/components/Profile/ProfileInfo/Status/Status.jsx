@@ -1,86 +1,64 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import edit from '../../../../assets/images/edit.png'
 import done from '../../../../assets/images/done.png'
 
 import s from './Status.module.css'
 
-export class Status extends React.Component {
-	state = {
-		editMode: false,
-		status: this.props.status
-	}
+export const StatusHooks = props => {
+	let [status, setStatus] = useState('')
+	let [editMode, setEditMode] = useState(false)
 
-	editModeEnable = () => {
+	useEffect(() => {
+		setStatus(props.status)
+	}, [props.status])
+
+	let editModeEnable = () => {
 		console.log(this)
-		this.setState({
-			editMode: true
-		})
+		setEditMode(true)
 	}
 
-	editModeDisable = () => {
-		this.setState({
-			editMode: false
-		})
-		let status = {
-			status: this.state.status
+	let editModeDisable = () => {
+		setEditMode(false)
+		let statusObj = {
+			status: status
 		}
-		this.props.updateStatus(status)
+		props.updateStatus(statusObj)
 	}
 
-	updateStatus = e => {
-		const text = e.currentTarget.value
-
-		this.setState({
-			status: text
-		})
-	}
-
-	componentDidUpdate(prevProps, prevState) {
-		if (this.props.status !== prevProps.status) {
-			this.setState({
-				status: this.props.status
-			})
-		}
-	}
-
-	render() {
-		return (
-			<>
-				<div className={s.status}>
-					{this.state.editMode ? (
-						<>
-							<div>
-								<input
-									type='text'
-									value={this.state.status}
-									autoFocus={true}
-									className={s.input}
-									onChange={this.updateStatus}
-								/>
-							</div>
-							<div className={s.inputContainer}>
-								<button onClick={this.editModeDisable} className={s.buttonSend}>
-									<img src={done} alt='No img :(' className={s.editPicture} />
-								</button>
-							</div>
-						</>
-					) : (
-						<>
-							<span>
-								{this.props.status === '' ? 'null' : this.props.status}
-							</span>
-							<div className={s.editContainer}>
-								<button onClick={this.editModeEnable} className={s.buttonEdit}>
-									<img src={edit} alt='No img :(' className={s.editPicture} />
-								</button>
-							</div>
-						</>
-					)}
-				</div>
-			</>
-		)
-	}
+	return (
+		<>
+			<div className={s.status}>
+				{editMode ? (
+					<>
+						<div>
+							<input
+								type='text'
+								value={status}
+								autoFocus={true}
+								className={s.input}
+								onChange={e => setStatus(e.currentTarget.value)}
+							/>
+						</div>
+						<div className={s.inputContainer}>
+							<button onClick={editModeDisable} className={s.buttonSend}>
+								<img src={done} alt='No img :(' className={s.editPicture} />
+							</button>
+						</div>
+					</>
+				) : (
+					<>
+						<span>{props.status === '' ? 'null' : props.status}</span>
+						<div className={s.editContainer}>
+							<button onClick={editModeEnable} className={s.buttonEdit}>
+								<img src={edit} alt='No img :(' className={s.editPicture} />
+							</button>
+						</div>
+					</>
+				)}
+			</div>
+		</>
+	)
 }
 
-export default Status
+export default StatusHooks

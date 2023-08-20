@@ -8,7 +8,7 @@ export const FormControls = ({ input, meta, ...props }) => {
 			<props.child
 				{...input}
 				placeholder={props.placeholder}
-				className={hasError ? s.error : ''}
+				className={hasError ? s.error : props.className}
 				type={props.type}
 			/>
 			{hasError && <span className={s.errorText}>{meta.error}</span>}

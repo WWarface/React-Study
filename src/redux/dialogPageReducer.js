@@ -1,4 +1,5 @@
 const ADD_MESSAGE = 'ADD_MESSAGE'
+const ADD_DIALOG = 'ADD_DIALOG'
 
 let initialState = {
 	dialogs: [
@@ -30,15 +31,15 @@ let initialState = {
 
 	messages: [
 		{
-			message: 'Hi negros!',
+			message: 'Hi everyone!',
 			id: '0'
 		},
 		{
-			message: 'Hi negros AXE!',
+			message: 'Hi im Alex!',
 			id: '1'
 		},
 		{
-			message: 'Ubili nekra!',
+			message: 'I like sushi!!!!!',
 			id: '2'
 		}
 	]
@@ -56,11 +57,31 @@ const dialogPageReducer = (state = initialState, action) => {
 				]
 			}
 		}
+		case ADD_DIALOG: {
+			return {
+				...state,
+				dialogs: [
+					...state.dialogs,
+					{
+						id: state.dialogs.length,
+						name: action.name,
+						url: action.photoUrl,
+						isActive: false
+					}
+				]
+			}
+		}
 		default:
 			return state
 	}
 }
 
 export const addMessage = messageText => ({ type: ADD_MESSAGE, messageText })
+
+export const addDialog = (name, photoUrl = '') => ({
+	type: ADD_DIALOG,
+	name,
+	photoUrl
+})
 
 export default dialogPageReducer

@@ -61,3 +61,19 @@
 	padding: 20px;
 	border-radius: 5px;
 }
+
+.transitionEffect {
+	transition: transform 0.3s ease; /* Добавляет плавное изменение */
+}
+.hoverEffect {
+	transition: box-shadow 0.3s ease; /* Добавляет плавное изменение тени */
+}
+.pictureMain {
+	width: 250px;
+	height: 250px;
+	margin-left: 10px;
+}
+
+.pictureMain:hover {
+	box-shadow: 0 0 10px rgb(4, 10, 178); /* Изменение тени при наведении на картинку */
+}

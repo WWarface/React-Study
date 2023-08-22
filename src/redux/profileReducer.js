@@ -39,7 +39,10 @@ const profileReducer = (state = initialState, action) => {
 		case SET_PROFILE_INFO: {
 			return {
 				...state,
-				profileInfo: action.profileInfo
+				profileInfo: {
+					...action.profileInfo,
+					photos: action.profileInfo.photos
+				}
 			}
 		}
 		case SET_STATUS: {

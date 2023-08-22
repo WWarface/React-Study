@@ -7,10 +7,18 @@ import { requiredField } from '../../../utils/validators'
 
 const Posts = React.memo(
 	props => {
-		console.log('POSTS')
+		console.log(props.profilePage)
 
 		let postsElements = props.profilePage.posts.map(p => (
-			<Post key={p.id} message={p.message} />
+			<Post
+				key={p.id}
+				message={p.message}
+				profilePhoto={
+					props.profilePage.profileInfo
+						? props.profilePage.profileInfo.photos.small
+						: null
+				}
+			/>
 		))
 
 		let addPost = formData => {
@@ -26,7 +34,10 @@ const Posts = React.memo(
 		)
 	},
 	(props, nextProps) => {
-		return props.profilePage.posts === nextProps.profilePage.posts
+		return (
+			props.profilePage.posts === nextProps.profilePage.posts &&
+			props.profilePage.profileInfo === nextProps.profilePage.profileInfo
+		)
 	}
 )
 

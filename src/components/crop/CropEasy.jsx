@@ -37,7 +37,6 @@ const CropEasy = ({ photoURL, setOpenCrop }) => {
 				croppedAreaPixels,
 				rotation
 			)
-			debugger
 			const photoFile = await urlToFile(url)
 			dispatch(uploadPhoto(photoFile))
 			setOpenCrop(false)

@@ -2,7 +2,7 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	height: 1050px;
+	/* height: 1050px; */
 	flex: 80%;
 	border: #363636;
 	border-width: 1px;
@@ -10,8 +10,8 @@
 }
 
 .contentImage {
-	width: 100%;
-	height: 30%;
+	max-width: 100%;
+	height: 350px;
 	object-fit: cover;
 	margin-bottom: 15px;
 }

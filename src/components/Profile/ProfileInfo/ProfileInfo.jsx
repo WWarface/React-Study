@@ -49,9 +49,9 @@ const ProfileInfo = props => {
 		<div className={s.profileContainer}>
 			<div
 				className={
-					props.isMainProfile ? s.mainContentImage : s.pictureContainer
+					props.isMainProfile ? `${s.mainContentImage}` : s.pictureContainer
 				}
-				onClick={handlePictureClick}
+				onClick={props.isMainProfile ? handlePictureClick : null}
 			>
 				<input
 					accept='image/*'
@@ -62,7 +62,11 @@ const ProfileInfo = props => {
 					ref={fileInputRef}
 				/>
 				<img
-					className={s.picture}
+					className={
+						props.isMainProfile
+							? `${s.pictureMain} ${s.transitionEffect} ${s.hoverEffect}`
+							: s.picture
+					}
 					alt='Not found'
 					src={ProfilePhoto ? ProfilePhoto : img}
 				></img>

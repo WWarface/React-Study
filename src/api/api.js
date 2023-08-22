@@ -47,9 +47,8 @@ export const profileApi = {
 	},
 	async savePhoto(photo) {
 		const formData = new FormData()
-		const fileName = 'photo.jpg' // Или любое другое имя с расширением
+		const fileName = 'photo.jpg'
 
-		// Добавьте изображение в formData с указанием имени файла
 		formData.append('image', photo, fileName)
 
 		const response = await instance.post('/profile/photo', formData, {
@@ -57,7 +56,6 @@ export const profileApi = {
 				'Content-Type': 'multipart/form-data'
 			}
 		})
-		debugger
 		return response.data
 	}
 }

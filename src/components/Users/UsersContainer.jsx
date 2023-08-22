@@ -3,7 +3,6 @@ import Users from './Users'
 import { connect } from 'react-redux'
 import React from 'react'
 import Preloader from '../common/Preloader/Preloader'
-import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 import { compose } from 'redux'
 import {
 	getCurrentPage,

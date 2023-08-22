@@ -1,19 +1,17 @@
 .content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: 1050px;
-    flex: 80%;
-    border: #363636;
-    border-width: 1px;
-    border-style: solid;
-  }
-  
-  .contentImage {
-    width: 100%;
-    height: 30%;
-    object-fit: cover;
-    margin-bottom: 15px;
-  }
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	height: 1050px;
+	flex: 80%;
+	border: #363636;
+	border-width: 1px;
+	border-style: solid;
+}
 
-  
+.contentImage {
+	width: 100%;
+	height: 30%;
+	object-fit: cover;
+	margin-bottom: 15px;
+}

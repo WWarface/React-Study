@@ -47,4 +47,9 @@ header {
 .logoutContainer:hover {
 	background-color: #3c3c3c;
 	cursor: pointer;
+	text-align: center;
+}
+
+.loginWord {
+	margin-right: 20px;
 }

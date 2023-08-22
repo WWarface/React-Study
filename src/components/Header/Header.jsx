@@ -17,7 +17,9 @@ const Header = props => {
 					</div>
 				</>
 			) : (
-				<div с={s.loginContainer}>Login</div>
+				<div с={s.loginContainer}>
+					<span className={s.loginWord}>Login</span>
+				</div>
 			)}
 		</header>
 	)

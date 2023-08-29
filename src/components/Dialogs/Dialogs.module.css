@@ -1,64 +1,78 @@
 .wrapper {
-    display: flex;
-    flex-direction: row;
-    flex: 80%;
-    border: 1px solid #363636;
+	display: flex;
+	flex-direction: row;
+	flex: 80%;
+	border: 1px solid #363636;
 }
 
 .dialogs {
-    display: flex;
-    flex:30%;
-    padding: 5px;
-    flex-direction: column;
-    border-right: 1px solid #363636;
-    border-top-right-radius: 0%;
-    border-bottom-right-radius: 0%;
+	display: flex;
+	flex: 30%;
+	padding: 5px;
+	flex-direction: column;
+	border-right: 1px solid #363636;
+	border-top-right-radius: 0%;
+	border-bottom-right-radius: 0%;
 }
 
 .messages {
-    display: flex;
-    flex:60%;
-    border-left: none;
-    padding: 20px 20px 0;
-    flex-direction: column;
-    
-    justify-content: space-between;
+	display: flex;
+	flex: 60%;
+	border-left: none;
+	padding: 20px 20px 0;
+	flex-direction: column;
+
+	justify-content: space-between;
 }
 
-.messages .textArea {    
-    width: 99%;  
-    border-color: #363636;  
-    border-radius: 40px;
-    resize: none;
-    background-color: #000000;
-    color: #fff;    
-    padding-left: 45px;
-    line-height: 1;
-    padding-top: 18px;
-    font-size: 20px;
+.messages .textArea {
+	width: 100%;
+	height: 100%;
+	border: solid 1px; /* Убираем границы */
+	border-radius: 50px; /* Убираем радиус границ */
+	padding: 0;
+	margin: 0;
+	resize: none;
+	background-color: #000000;
+	border-color: #363636;
+	color: #fff;
+	line-height: 1;
+	font-size: 20px;
+
+	line-height: 1;
+	padding-left: 25px;
 }
 
 .textAreaButton {
-    width: 158px;
-    height: 30px;
-    align-self: last baseline; 
-    margin:10px 0 18px 0;
-    font-family: 'Montserrat', sans-serif;
-    color: #0095f6;
-    font-size: 18px;
-    border: none;
-    background-color: transparent;
+	width: 158px;
+	height: 30px;
+	align-self: last baseline;
+	font-family: 'Montserrat', sans-serif;
+	color: #0095f6;
+	font-size: 18px;
+	border: none;
+	background-color: transparent;
 
-    position: absolute;
-    bottom: 0;
-    right: 0;
+	position: absolute;
+	top: 50%;
+	right: 2%;
+	transform: translateY(-50%);
 }
 
 .submissionContainer {
-    align-self: flex-end;
-    margin-top: auto;
-    width: 100%;  
-    display: flex;
-    flex-direction: row;
-    position: relative;
+	align-self: flex-end;
+	margin-top: auto;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	position: relative;
+}
+
+.inputContainer {
+	position: relative;
+	display: inline-block;
+	width: 496px;
+	height: 60px;
+
+	margin-bottom: 10px;
 }

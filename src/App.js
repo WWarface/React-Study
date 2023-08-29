@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Settings from './components/Settings/Settings'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
@@ -9,39 +9,42 @@ import ProfileContainer from './components/Profile/ProfileContainer'
 import HeaderContainer from './components/Header/HeaderContainer'
 import Login from './components/Login/login'
 import MusicContainer from './components/Music/MusicContainer'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { InitializeApp } from './redux/appReducer'
 import Preloader from './components/common/Preloader/Preloader'
 
-class App extends React.Component {
-	componentDidMount() {
-		this.props.InitializeApp()
-	}
+const App = props => {
+	useEffect(() => {
+		props.InitializeApp()
+		document.body.id = theme
+	}, [props.theme])
 
-	render() {
-		if (!this.props.initialized) return <Preloader />
+	const theme = useSelector(state => state.environment.theme)
 
-		return (
-			<div className='wrapper'>
-				<HeaderContainer />
-				<div className='main-content-wrapper'>
-					<SideBarContainer />
-					<Routes>
-						<Route path='/profile/:userId?' element={<ProfileContainer />} />
-						<Route path='/dialogs/*' element={<DialogsContainer />} />
-						<Route path='/users' element={<UsersContainer />} />
-						<Route path='/music' element={<MusicContainer />} />
-						<Route path='/settings' element={<Settings />} />
-						<Route path='/login' element={<Login />} />
-					</Routes>
-				</div>
+	if (!props.initialized) return <Preloader />
+
+	return (
+		<div className='wrapper' id={theme}>
+			<HeaderContainer id={theme} />
+			<div className='main-content-wrapper'>
+				<SideBarContainer />
+				<Routes>
+					<Route path='/' element={<Navigate to='/profile' />} />
+					<Route path='/profile/:userId?' element={<ProfileContainer />} />
+					<Route path='/dialogs/*' element={<DialogsContainer />} />
+					<Route path='/users' element={<UsersContainer />} />
+					<Route path='/music' element={<MusicContainer />} />
+					<Route path='/settings' element={<Settings />} />
+					<Route path='/login' element={<Login />} />
+				</Routes>
 			</div>
-		)
-	}
+		</div>
+	)
 }
 
 const mapStateToProps = state => ({
-	initialized: state.app.initialized
+	initialized: state.app.initialized,
+	theme: state.environment.theme
 })
 
 export default connect(mapStateToProps, { InitializeApp })(App)

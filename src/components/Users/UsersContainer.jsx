@@ -27,9 +27,9 @@ class UsersContainer extends React.Component {
 
 	render() {
 		return (
-			<div style={{ flex: 80 }}>
+			<>
 				{this.props.isFetching ? (
-					<Preloader />
+					<Preloader sx={{ width: 'auto', height: 'auto' }} />
 				) : (
 					<Users
 						currentPage={this.props.currentPage}
@@ -42,7 +42,7 @@ class UsersContainer extends React.Component {
 						isFollowing={this.props.isFollowing}
 					/>
 				)}
-			</div>
+			</>
 		)
 	}
 }

@@ -5,18 +5,22 @@ import s from './login.module.css'
 import { Field, reduxForm } from 'redux-form'
 import { login } from '../../redux/authReducer'
 import { Navigate } from 'react-router-dom'
-
 const Login = props => {
 	const onSubmit = formData => {
 		console.log(formData)
-		props.login(formData.email, formData.password, formData.rememberMe)
+		props.login(
+			formData.email,
+			formData.password,
+			formData.rememberMe,
+			formData.captcha
+		)
 	}
 
 	if (props.isLogged) return <Navigate to={'/profile'} />
 
 	return (
 		<div className={s.loginWrapper}>
-			<LoginReduxForm onSubmit={onSubmit} />
+			<LoginReduxForm onSubmit={onSubmit} captcha={props.captcha} />
 		</div>
 	)
 }
@@ -57,6 +61,20 @@ const LoginForm = props => {
 				/>{' '}
 				remember me
 			</div>
+			{props.captcha && (
+				<div>
+					<img src={props.captcha} alt='no img' />
+					<Field
+						placeholder={'Symbols'}
+						component={FormControls}
+						name='captcha'
+						validate={requiredField}
+						child='input'
+						type={''}
+						className={s.input}
+					/>{' '}
+				</div>
+			)}
 			{props.error ? (
 				<div className={s.errorContainer}>
 					<span className={s.errorMessage}>{props.error}</span>
@@ -76,7 +94,8 @@ const LoginReduxForm = reduxForm({
 })(LoginForm)
 
 let mapDispatchToProps = state => ({
-	isLogged: state.auth.isLogged
+	isLogged: state.auth.isLogged,
+	captcha: state.auth.captcha
 })
 
 export default connect(mapDispatchToProps, { login })(Login)

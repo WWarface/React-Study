@@ -1,5 +1,9 @@
 .loginWrapper {
 	flex: 80;
+	border: #363636;
+	border-width: 1px;
+	border-style: solid;
+	padding: 10px;
 }
 
 .errorContainer {

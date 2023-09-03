@@ -1,7 +1,9 @@
 import React from 'react'
-import styles from '../Users.module.css'
+import s from '../Users.module.css'
+import { useSelector } from 'react-redux'
 
 let Paginator = props => {
+	const theme = useSelector(state => state.environment.theme)
 	const TOTAL_UI_BUTTONS_COUNT = 10
 	let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
 
@@ -18,8 +20,8 @@ let Paginator = props => {
 	let slicedPages = pages.slice(curPF, curPL)
 
 	return (
-		<div className={styles.wrapper}>
-			<div className={styles.buttonsWrapper}>
+		<div className={s.wrapper}>
+			<div className={s.buttonsWrapper}>
 				{slicedPages.map(p => {
 					return (
 						<button
@@ -28,8 +30,8 @@ let Paginator = props => {
 							}}
 							className={
 								props.currentPage === p
-									? `${styles.selectedPage}`
-									: `${styles.pageButton}`
+									? `${theme === 'light' ? s.selectedPageLight : s.selectedPage}`
+									: `${theme === 'light' ? s.pageButtonLight : s.pageButton}`
 							}
 						>
 							{p}

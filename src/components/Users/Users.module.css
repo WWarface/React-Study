@@ -8,6 +8,11 @@
 	margin-right: 12px;
 }
 
+.avaLight{
+	height: 44px;
+	margin-right: 12px;
+}
+
 .userWrapper {
 	display: flex;
 }
@@ -44,6 +49,7 @@
 
 	width: 128px;
 	height: 32px;
+	border-color: #ffffff00;
 
 	background-color: #0095f6;
 	color: #fff;
@@ -52,6 +58,11 @@
 	margin-left: auto;
 
 	transition: background-color 0.5s ease;
+}
+
+.buttonFollow:hover{
+	cursor: pointer;
+	background-color: #0179ca;
 }
 
 .buttonFollow:disabled {
@@ -71,6 +82,9 @@
 
 	width: 128px;
 	height: 32px;
+
+	border-color: #ffffff00;
+
 
 	background-color: #efefef;
 	color: #000000;
@@ -103,8 +117,28 @@
 	transition: background-color 0.3s ease;
 }
 
+.pageButtonLight {
+	width: 100px;
+	height: 30px;
+	margin: 0 10px 0 0;
+	background-color: rgb(155, 37, 37);
+	color: #000000;
+	background: none;
+	border: none;
+	box-shadow: none;
+
+	border-radius: 6px;
+
+	transition: background-color 0.3s ease;
+}
+
 .pageButton:hover {
 	background-color: #3c3c3c;
+	cursor: pointer;
+}
+
+.pageButtonLight:hover {
+	background-color: #f6f5f5;
 	cursor: pointer;
 }
 
@@ -123,6 +157,20 @@
 	height: 30px;
 	margin: 0 10px 0 0;
 	color: #fff;
+	border: none;
+	box-shadow: none;
+
+	border-radius: 6px;
+
+	transition: background-color 0.3s ease;
+}
+
+.selectedPageLight{
+	background-color:#f6f5f5;;;
+	width: 100px;
+	height: 30px;
+	margin: 0 10px 0 0;
+	color: #000000;
 	border: none;
 	box-shadow: none;
 

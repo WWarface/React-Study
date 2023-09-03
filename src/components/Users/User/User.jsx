@@ -1,23 +1,26 @@
 import React from 'react'
-import styles from '../Users.module.css'
+import s from '../Users.module.css'
 import userPhoto from '../../../assets/images/NoAvatar.png'
 import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 let User = props => {
 	let u = props.user
+	const theme = useSelector(state => state.environment.theme)
+
 	return (
-		<div className={styles.userWrapper}>
+		<div className={s.userWrapper}>
 			<NavLink to={'/profile/' + u.id}>
 				<img
 					src={u.photos.small != null ? u.photos.small : userPhoto}
-					className={styles.ava}
+					className={theme === 'light' ? s.avaLight : s.ava}
 					alt='no img(nop'
 				></img>
 			</NavLink>
-			<div className={styles.description}>
-				<p className={styles.name}>{u.name}</p>
-				<p className={styles.status}>{'u.location.city'}</p>
-				<p className={styles.info}>{'u.location.country'}</p>
+			<div className={s.description}>
+				<p className={s.name}>{u.name}</p>
+				<p className={s.status}>{'u.location.city'}</p>
+				<p className={s.info}>{'u.location.country'}</p>
 			</div>
 			{u.followed ? (
 				<button
@@ -25,7 +28,7 @@ let User = props => {
 					onClick={() => {
 						props.unFollow(u.id)
 					}}
-					className={styles.buttonUnfollow}
+					className={s.buttonUnfollow}
 				>
 					UnFollow
 				</button>
@@ -35,7 +38,7 @@ let User = props => {
 					onClick={() => {
 						props.follow(u.id)
 					}}
-					className={styles.buttonFollow}
+					className={s.buttonFollow}
 				>
 					Subscribe
 				</button>

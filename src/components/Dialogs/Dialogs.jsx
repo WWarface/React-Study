@@ -3,9 +3,11 @@ import Dialog from './Dialog/Dialog'
 import s from './Dialogs.module.css'
 import Message from './Message/Message.jsx'
 import { Field, reduxForm, reset } from 'redux-form'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Dialogs = props => {
+	const theme = useSelector(state => state.environment.theme)
+
 	const dispatch = useDispatch()
 	let dialogsElements = props.dialogPage.dialogs.map(d => (
 		<Dialog isActive={d.isActive} name={d.name} url={d.url} key={d.id} />
@@ -27,7 +29,7 @@ const Dialogs = props => {
 			<div className={s.messages}>
 				{messageElements}
 				<div className={s.submissionContainer}>
-					<DialogsReduxForm onSubmit={AddPost} />
+					<DialogsReduxForm theme={theme} onSubmit={AddPost} />
 				</div>
 			</div>
 		</div>
@@ -38,7 +40,7 @@ const DialogsForm = props => {
 	return (
 		<form onSubmit={props.handleSubmit}>
 			<div className={s.inputContainer}>
-				<Field name='textArea' component='input' className={s.textArea} />
+				<Field name='textArea' component='input' className={props.theme === 'light' ? s.textAreaLight : s.textArea} />
 				<button className={s.textAreaButton}>Send Message</button>
 			</div>
 		</form>

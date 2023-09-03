@@ -4,8 +4,11 @@ import edit from '../../../../assets/images/edit.png'
 import done from '../../../../assets/images/done.png'
 
 import s from './Status.module.css'
+import { useSelector } from 'react-redux'
 
 export const StatusHooks = props => {
+	const theme = useSelector(state => state.environment.theme)
+
 	let [status, setStatus] = useState('')
 	let [editMode, setEditMode] = useState(false)
 
@@ -36,22 +39,40 @@ export const StatusHooks = props => {
 								type='text'
 								value={status}
 								autoFocus={true}
-								className={s.input}
+								className={theme === 'light' ? s.inputInverted : s.input}
 								onChange={e => setStatus(e.currentTarget.value)}
 							/>
 						</div>
 						<div className={s.inputContainer}>
 							<button onClick={editModeDisable} className={s.buttonSend}>
-								<img src={done} alt='No img :(' className={s.editPicture} />
+								<img
+									src={done}
+									alt='No img :('
+									className={
+										theme === 'light'
+											? `${s.darkPicture} ${s.editPicture}`
+											: s.editPicture
+									}
+								/>
 							</button>
 						</div>
 					</>
 				) : (
 					<>
-						<span>{props.status === '' ? 'null' : props.status}</span>
+						<span className={s.statusSpan}>
+							{props.status === '' ? 'null' : props.status}
+						</span>
 						<div className={s.editContainer}>
 							<button onClick={editModeEnable} className={s.buttonEdit}>
-								<img src={edit} alt='No img :(' className={s.editPicture} />
+								<img
+									src={edit}
+									alt='No img :('
+									className={
+										theme === 'light'
+											? `${s.darkPicture} ${s.editPicture}`
+											: s.editPicture
+									}
+								/>
 							</button>
 						</div>
 					</>

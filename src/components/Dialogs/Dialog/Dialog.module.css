@@ -1,35 +1,40 @@
 .avatar {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
 }
 
 .dialog {
-    display: flex;
-    flex-direction: row;
-    flex: 100%;
-    margin-bottom: 10px;
+	display: flex;
+	flex-direction: row;
+	flex: 100%;
+	margin-bottom: 10px;
+}
+#light .dialog {
+	background-color: #ffffff !important;
 }
 
 .avatarContainer {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    overflow: hidden;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	overflow: hidden;
 }
 
 span {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .name {
-    display: flex;
-    align-items: center;   
-    justify-content: center;
-    padding-left: 10px;
-    text-decoration: none;
-    color: #fff;    
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-left: 10px;
+	color: #fff;
+}
+
+.linkName {
+	text-decoration: none;
 }

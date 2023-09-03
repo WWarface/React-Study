@@ -3,7 +3,6 @@ import Users from './Users'
 import { connect } from 'react-redux'
 import React from 'react'
 import Preloader from '../common/Preloader/Preloader'
-import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 import { compose } from 'redux'
 import {
 	getCurrentPage,
@@ -28,9 +27,9 @@ class UsersContainer extends React.Component {
 
 	render() {
 		return (
-			<div style={{ flex: 80 }}>
+			<>
 				{this.props.isFetching ? (
-					<Preloader />
+					<Preloader sx={{ width: 'auto', height: 'auto' }} />
 				) : (
 					<Users
 						currentPage={this.props.currentPage}
@@ -43,7 +42,7 @@ class UsersContainer extends React.Component {
 						isFollowing={this.props.isFollowing}
 					/>
 				)}
-			</div>
+			</>
 		)
 	}
 }

@@ -2,9 +2,11 @@ import React from 'react'
 import Dialog from './Dialog/Dialog'
 import s from './Dialogs.module.css'
 import Message from './Message/Message.jsx'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, reset } from 'redux-form'
+import { useDispatch } from 'react-redux'
 
 const Dialogs = props => {
+	const dispatch = useDispatch()
 	let dialogsElements = props.dialogPage.dialogs.map(d => (
 		<Dialog isActive={d.isActive} name={d.name} url={d.url} key={d.id} />
 	))
@@ -15,6 +17,8 @@ const Dialogs = props => {
 
 	let AddPost = formData => {
 		props.addMessage(formData.textArea)
+
+		dispatch(reset('dialogsForm'))
 	}
 
 	return (
@@ -33,8 +37,10 @@ const Dialogs = props => {
 const DialogsForm = props => {
 	return (
 		<form onSubmit={props.handleSubmit}>
-			<Field name='textArea' component='textarea' className={s.textArea} />
-			<button className={s.textAreaButton}>Send Message</button>
+			<div className={s.inputContainer}>
+				<Field name='textArea' component='input' className={s.textArea} />
+				<button className={s.textAreaButton}>Send Message</button>
+			</div>
 		</form>
 	)
 }

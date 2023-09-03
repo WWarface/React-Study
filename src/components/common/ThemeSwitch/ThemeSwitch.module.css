@@ -1,0 +1,30 @@
+.switchWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 30px;
+}
+
+/* ThemeSwitch.module.css */
+.LightModeIcon {
+	height: 22px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.label {
+	font-size: 20px !important;
+}
+
+@media only screen and (max-width: 768px) {
+	.label {
+		font-size: 12px !important;
+	}
+	.LightModeIcon {
+		height: 16px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

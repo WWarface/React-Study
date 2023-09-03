@@ -1,3 +1,4 @@
+import { reset } from 'redux-form'
 const ADD_MESSAGE = 'ADD_MESSAGE'
 const ADD_DIALOG = 'ADD_DIALOG'
 
@@ -18,12 +19,12 @@ let initialState = {
 		{
 			id: '2',
 			name: 'Ivakhiv1',
-			url: 'https://preview.redd.it/this-looks-like-irl-uncle-kesseli-v0-ye2ppfghqmj81.jpg?auto=webp&s=bdd454d4df1340c951c1401f852c4b972d92aae3',
+			url: 'https://i.pinimg.com/564x/5e/46/76/5e46760982535bbd8aab458d094871d6.jpg',
 			isActive: false
 		},
 		{
 			id: '3',
-			name: 'Custom4mo',
+			name: 'Customs',
 			url: 'https://www.racedepartment.com/attachments/fleetari3-png.430600/',
 			isActive: false
 		}
@@ -77,6 +78,8 @@ const dialogPageReducer = (state = initialState, action) => {
 }
 
 export const addMessage = messageText => ({ type: ADD_MESSAGE, messageText })
+
+export const clearForm = () => reset('dialogsForm')
 
 export const addDialog = (name, photoUrl = '') => ({
 	type: ADD_DIALOG,

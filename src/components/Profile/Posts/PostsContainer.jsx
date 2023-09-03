@@ -2,7 +2,6 @@ import { compose } from 'redux'
 import { addPost } from '../../../redux/profileReducer'
 import Posts from './Posts'
 import { connect } from 'react-redux'
-import React from 'react'
 
 let mapStateToProps = state => {
 	return {

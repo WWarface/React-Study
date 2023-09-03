@@ -37,6 +37,13 @@ export const authApi = {
 		return instance.delete('/auth/login').then(response => response.data)
 	}
 }
+export const securityApi = {
+	getCaptcha() {
+		return instance
+			.get('security/get-captcha-url')
+			.then(response => response.data)
+	}
+}
 
 export const profileApi = {
 	getStatus(userId) {
@@ -44,6 +51,19 @@ export const profileApi = {
 	},
 	updateStatus(status) {
 		return instance.put('/profile/status', status)
+	},
+	async savePhoto(photo) {
+		const formData = new FormData()
+		const fileName = 'photo.jpg'
+
+		formData.append('image', photo, fileName)
+
+		const response = await instance.post('/profile/photo', formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		})
+		return response.data
 	}
 }
 

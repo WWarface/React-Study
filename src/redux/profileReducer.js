@@ -3,6 +3,7 @@ import { getUserInfo, profileApi } from '../api/api'
 const ADD_POST = 'ADD_POST'
 const SET_PROFILE_INFO = 'SET_PROFILE_INFO'
 const SET_STATUS = 'SET_STATUS'
+const UPLOAD_PHOTOS = 'UPLOAD_PHOTOS'
 
 let initialState = {
 	posts: [
@@ -38,13 +39,22 @@ const profileReducer = (state = initialState, action) => {
 		case SET_PROFILE_INFO: {
 			return {
 				...state,
-				profileInfo: action.profileInfo
+				profileInfo: {
+					...action.profileInfo,
+					photos: action.profileInfo.photos
+				}
 			}
 		}
 		case SET_STATUS: {
 			return {
 				...state,
 				status: action.status
+			}
+		}
+		case UPLOAD_PHOTOS: {
+			return {
+				...state,
+				profileInfo: { ...state.profileInfo, photos: action.photos.photos }
 			}
 		}
 		default:
@@ -63,7 +73,10 @@ export const setStatus = status => ({
 	type: SET_STATUS,
 	status
 })
-
+export const setPhotos = photos => ({
+	type: UPLOAD_PHOTOS,
+	photos
+})
 export const getInfo = userId => {
 	return async dispatch => {
 		let data = await getUserInfo(userId)
@@ -83,6 +96,17 @@ export const updateStatus = status => {
 		let data = await profileApi.updateStatus(status)
 		if (data.data.resultCode === 0) {
 			dispatch(setStatus(status.status))
+		}
+	}
+}
+
+export const uploadPhoto = photo => {
+	return async dispatch => {
+		let response = await profileApi.savePhoto(photo)
+		if (response.resultCode === 0) {
+			dispatch(setPhotos(response.data))
+		} else {
+			console.log(response.messages)
 		}
 	}
 }

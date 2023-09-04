@@ -1,3 +1,41 @@
+@media only screen and (max-width: 1200px) {
+	.inputContainer {
+		position: relative;
+		display: inline-block;
+		width: 404px !important;
+		height: 60px;
+	
+		margin-bottom: 10px;
+	}
+
+	.textAreaButton {
+		width: 158px;
+		height: 30px;
+		align-self: last baseline;
+		font-family: 'Montserrat', sans-serif;
+		color: #0095f6;
+		font-size: 16px !important;
+		border: none;
+		background-color: transparent;
+	
+		position: absolute;
+		top: 50%;
+		right: 2%;
+		transform: translateY(-50%);
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	.inputContainer {
+		position: relative;
+		display: inline-block;
+		width: 352px !important;
+		height: 60px;
+	
+		margin-bottom: 10px;
+	}
+}
+
 .wrapper {
 	display: flex;
 	flex-direction: row;

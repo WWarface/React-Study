@@ -76,7 +76,7 @@ const ProfileInfo = props => {
 					{props.profileInfo.fullName ? props.profileInfo.fullName : 'Pudge'}
 				</h3>
 
-				<Status updateStatus={props.updateStatus} status={props.status} />
+				<Status isMainProfile={props.isMainProfile} updateStatus={props.updateStatus} status={props.status} />
 
 				{props.profileInfo.aboutMe ? (
 					<SingleInfo info={props.profileInfo.aboutMe} icon={aboutImg} />

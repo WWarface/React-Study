@@ -60,6 +60,46 @@ body {
 	margin: 0 auto;
 }
 
+/* Main content */
+
+.main-content-wrapper {
+	display: flex;
+	flex-direction: row;
+	margin-top: 15px;
+	height: auto;
+}
+
+/* Posts div */
+
+/* Aside */
+
+aside {
+	flex: 20%;
+	padding: 5px;
+}
+
+#light {
+	background-color: #fff;
+	color: #23272f;
+}
+#light span {
+	color: #23272f;
+}
+
+#light .active {
+	color: #23272f;
+}
+#light .item {
+	color: #23272f;
+}
+
+#light .wrapper {
+	background-color: #ffffff;
+}
+#light body {
+	background-color: #ffffff;
+}
+
 /* Large devices, wide screens */
 @media only screen and (max-width: 1200px) {
 	.wrapper {
@@ -91,41 +131,25 @@ body {
 		height: auto;
 	}
 }
-/* Main content */
-
-.main-content-wrapper {
-	display: flex;
-	flex-direction: row;
-	margin-top: 15px;
-	height: auto;
+/* Extra small devices, Phones */
+@media only screen and (max-width: 480px) {
+	.wrapper {
+		width: 100%;
+		max-width: none; /* Убираем ограничение максимальной ширины */
+		margin-left: 0; /* Убираем отступ слева */
+		margin-right: 0; /* Убираем отступ справа */
+	}
+	html, body {
+		width: auto;		
+		margin: 0;
+		padding: 0;
+	  }
+	.main-content-wrapper {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		margin-top: 0px;
+		height: auto;
+	}
 }
 
-/* Posts div */
-
-/* Aside */
-
-aside {
-	flex: 20%;
-}
-
-#light {
-	background-color: #fff;
-	color: #23272f;
-}
-#light span {
-	color: #23272f;
-}
-
-#light .active {
-	color: #23272f;
-}
-#light .item {
-	color: #23272f;
-}
-
-#light .wrapper {
-	background-color: #ffffff;
-}
-#light body {
-	background-color: #ffffff;
-}

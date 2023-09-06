@@ -6,9 +6,8 @@ import done from '../../../../assets/images/done.png'
 import s from './Status.module.css'
 import { useSelector } from 'react-redux'
 
-export const StatusHooks = props => {
+export const Status = props => {
 	const theme = useSelector(state => state.environment.theme)
-
 	let [status, setStatus] = useState('')
 	let [editMode, setEditMode] = useState(false)
 
@@ -45,34 +44,38 @@ export const StatusHooks = props => {
 						</div>
 						<div className={s.inputContainer}>
 							<button onClick={editModeDisable} className={s.buttonSend}>
-								<img
-									src={done}
-									alt='No img :('
-									className={
-										theme === 'light'
-											? `${s.darkPicture} ${s.editPicture}`
-											: s.editPicture
-									}
-								/>
+								{props.isMainProfile && (
+									<img
+										src={done}
+										alt='No img :('
+										className={
+											theme === 'light'
+												? `${s.darkPicture} ${s.editPicture}`
+												: s.editPicture
+										}
+									/>
+								)}
 							</button>
 						</div>
 					</>
 				) : (
 					<>
 						<span className={s.statusSpan}>
-							{props.status === '' ? 'null' : props.status}
+							{props.status}
 						</span>
 						<div className={s.editContainer}>
 							<button onClick={editModeEnable} className={s.buttonEdit}>
-								<img
-									src={edit}
-									alt='No img :('
-									className={
-										theme === 'light'
-											? `${s.darkPicture} ${s.editPicture}`
-											: s.editPicture
-									}
-								/>
+								{props.isMainProfile && (
+									<img
+										src={edit}
+										alt='No img :('
+										className={
+											theme === 'light'
+												? `${s.darkPicture} ${s.editPicture}`
+												: s.editPicture
+										}
+									/>
+								)}
 							</button>
 						</div>
 					</>
@@ -82,4 +85,4 @@ export const StatusHooks = props => {
 	)
 }
 
-export default StatusHooks
+export default Status

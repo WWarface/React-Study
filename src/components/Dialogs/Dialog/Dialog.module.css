@@ -38,3 +38,25 @@ span {
 .linkName {
 	text-decoration: none;
 }
+
+
+@media only screen and (max-width: 480px) {
+	.avatarContainer {
+		width: 34px;
+		height: 34px;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+	.name {
+		display: none;
+		
+	}
+
+	.linkName {
+		display: flex;
+		flex-direction: column;
+		align-items: center; /* Выравнивание по вертикали по центру */
+		justify-content: center; /* Выравнивание по горизонтали по центру */
+		text-align: center; /* Выравнивание текста по центру */
+	}
+}

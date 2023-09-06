@@ -84,3 +84,15 @@
 .profileContainer:hover {
 	border: 1px solid #0074d9; /* Изменение рамки при наведении */
 }
+
+
+@media only screen and (max-width: 480px) {
+	.messageText {
+		margin-left: 12px;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 16px
+	}
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import Switch from 'react-switch'
 import s from './ThemeSwitch.module.css'
 
+
 const ThemeSwitch = ({ checked, handleChange = null }) => {
 
 

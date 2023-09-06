@@ -1,23 +1,4 @@
-@media only screen and (max-width: 768px) {
-	.pictureMain {
-		width: 200px !important;
-		height: 200px !important;
-		margin-left: 10px;
-	}
-	.picture {
-		width: 165px;
-		height: 165px;
-		margin-left: 10px;
-	}
 
-	.name {
-		margin-top: 0;
-		font-size: 26px !important;
-		font-weight: 600;
-		color: rgb(110, 109, 109);
-		margin-bottom: 5px;
-	}
-}
 
 .name {
 	margin-top: 0;
@@ -98,4 +79,60 @@
 
 .pictureMain:hover {
 	box-shadow: 0 0 10px rgb(4, 10, 178); /* Изменение тени при наведении на картинку */
+}
+
+@media only screen and (max-width: 768px) {
+	.pictureMain {
+		width: 200px !important;
+		height: 200px !important;
+		margin-left: 10px;
+	}
+	.picture {
+		width: 165px;
+		height: 165px;
+		margin-left: 10px;
+	}
+
+	.name {
+		margin-top: 0;
+		font-size: 26px !important;
+		font-weight: 600;
+		color: rgb(110, 109, 109);
+		margin-bottom: 5px;
+	}
+}
+
+
+@media only screen and (max-width: 480px) {
+
+	.pictureMain {
+		width: 100px !important;
+		height: 100px !important;
+		margin-left: 10px;
+	}
+	.picture {
+		width: 100px;
+		height: 100px;
+		margin-left: 10px;
+	}
+
+	.name {
+		margin-top: 0;
+		font-size: 26px !important;
+		font-weight: 600;
+		color: rgb(110, 109, 109);
+		margin-bottom: 5px;
+	}
+	.profileContainer {
+		padding-top: 9px;
+		height: auto;
+		display: flex;
+		flex-direction: row;
+		border: #363636;
+		border-style: solid;
+		border-top-width: 0px;
+		border-bottom-width: 1px;
+		border-right-width: 0px;
+		border-left-width: 0px;
+	}
 }

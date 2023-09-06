@@ -60,37 +60,6 @@ body {
 	margin: 0 auto;
 }
 
-/* Large devices, wide screens */
-@media only screen and (max-width: 1200px) {
-	.wrapper {
-		width: 900px;
-		margin: 0 auto;
-	}
-}
-
-/* medium devices, Desktops */
-@media only screen and (max-width: 992px) {
-	.wrapper {
-		width: 800px;
-		margin: 0 auto;
-	}
-}
-
-/* small devices, tablets */
-@media only screen and (max-width: 768px) {
-	.wrapper {
-		width: 600px;
-		margin: 0 auto;
-	}
-
-	.main-content-wrapper {
-		width: 600px;
-		display: flex;
-		flex-direction: row;
-		margin-top: 15px;
-		height: auto;
-	}
-}
 /* Main content */
 
 .main-content-wrapper {
@@ -130,3 +99,57 @@ aside {
 #light body {
 	background-color: #ffffff;
 }
+
+/* Large devices, wide screens */
+@media only screen and (max-width: 1200px) {
+	.wrapper {
+		width: 900px;
+		margin: 0 auto;
+	}
+}
+
+/* medium devices, Desktops */
+@media only screen and (max-width: 992px) {
+	.wrapper {
+		width: 800px;
+		margin: 0 auto;
+	}
+}
+
+/* small devices, tablets */
+@media only screen and (max-width: 768px) {
+	.wrapper {
+		width: 600px;
+		margin: 0 auto;
+	}
+
+	.main-content-wrapper {
+		width: 600px;
+		display: flex;
+		flex-direction: row;
+		margin-top: 15px;
+		height: auto;
+	}
+}
+/* Extra small devices, Phones */
+@media only screen and (max-width: 480px) {
+	.wrapper {
+		width: 100%;
+		max-width: none; /* Убираем ограничение максимальной ширины */
+		margin-left: 0; /* Убираем отступ слева */
+		margin-right: 0; /* Убираем отступ справа */
+	}
+	html, body {
+		width: auto;		
+		margin: 0;
+		padding: 0;
+	  }
+	.main-content-wrapper {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		margin-top: 0px;
+		height: auto;
+	}
+}
+

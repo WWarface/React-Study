@@ -56,3 +56,17 @@
 .input:focus {
 	border-color: #0095f6;
 }
+
+@media only screen and (max-width: 480px) {
+	.loginWrapper{
+		border: none;
+	}
+	.loginFormWrapper{
+		display: flex;
+		justify-content: center;
+	}
+	.loginWord{
+		display: flex;
+		justify-content: center;
+	}
+}

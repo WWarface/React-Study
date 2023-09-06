@@ -41,7 +41,7 @@ const DialogsForm = props => {
 		<form onSubmit={props.handleSubmit}>
 			<div className={s.inputContainer}>
 				<Field name='textArea' component='input' className={props.theme === 'light' ? s.textAreaLight : s.textArea} />
-				<button className={s.textAreaButton}>Send Message</button>
+				<button className={s.textAreaButton}>Send</button>
 			</div>
 		</form>
 	)

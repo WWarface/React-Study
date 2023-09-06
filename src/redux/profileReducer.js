@@ -87,7 +87,6 @@ export const getInfo = userId => {
 export const getStatus = userId => {
 	return async dispatch => {
 		let data = await profileApi.getStatus(userId)
-		debugger
 		data.data
 			? dispatch(setStatus(data.data))
 			: dispatch(setStatus('no status'))

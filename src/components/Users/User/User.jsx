@@ -10,7 +10,7 @@ let User = props => {
 
 	return (
 		<div className={s.userWrapper}>
-			<NavLink to={'/profile/' + u.id}>
+			<NavLink to={'/profile/' + u.id} className={s.userLinkAva}>
 				<img
 					src={u.photos.small != null ? u.photos.small : userPhoto}
 					className={theme === 'light' ? s.avaLight : s.ava}

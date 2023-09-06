@@ -1,4 +1,4 @@
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { requiredField } from '../../utils/validators'
 import { FormControls } from '../common/FormControls/FormControls'
 import s from './login.module.css'
@@ -27,65 +27,69 @@ const Login = props => {
 
 const LoginForm = props => {
 	return (
-		<form onSubmit={props.handleSubmit}>
-			<h1>Login</h1>
-			<div>
-				<Field
-					placeholder={'Email'}
-					component={FormControls}
-					name='email'
-					validate={requiredField}
-					child='input'
-					className={s.input}
-				/>{' '}
-				Login
-			</div>
-			<div>
-				<Field
-					placeholder={'Password'}
-					component={FormControls}
-					name='password'
-					validate={requiredField}
-					child='input'
-					type={'password'}
-					className={s.input}
-				/>{' '}
-				password
-			</div>
-			<div>
-				<Field
-					placeholder={'input'}
-					component={'input'}
-					type={'checkbox'}
-					name='rememberMe'
-				/>{' '}
-				remember me
-			</div>
-			{props.captcha && (
+		<div className={s.loginFormWrapper}>
+			<form onSubmit={props.handleSubmit}>
+				<div className={s.loginWord}>
+					<h1>Login</h1>
+				</div>
 				<div>
-					<img src={props.captcha} alt='no img' />
 					<Field
-						placeholder={'Symbols'}
+						placeholder={'Email'}
 						component={FormControls}
-						name='captcha'
+						name='email'
 						validate={requiredField}
 						child='input'
-						type={''}
 						className={s.input}
 					/>{' '}
+					<br></br>
 				</div>
-			)}
-			{props.error ? (
-				<div className={s.errorContainer}>
-					<span className={s.errorMessage}>{props.error}</span>
+				<div>
+					<Field
+						placeholder={'Password'}
+						component={FormControls}
+						name='password'
+						validate={requiredField}
+						child='input'
+						type={'password'}
+						className={s.input}
+					/>{' '}
+					password
 				</div>
-			) : (
-				''
-			)}
-			<div>
-				<button className={s.loginButton}>Login</button>
-			</div>
-		</form>
+				<div>
+					<Field
+						placeholder={'input'}
+						component={'input'}
+						type={'checkbox'}
+						name='rememberMe'
+					/>{' '}
+					remember me
+				</div>
+				{props.captcha && (
+					<div>
+						<img src={props.captcha} alt='no img' />
+						<Field
+							placeholder={'Symbols'}
+							component={FormControls}
+							name='captcha'
+							validate={requiredField}
+							child='input'
+							type={''}
+							className={s.input}
+						/>{' '}
+					</div>
+				)}
+				{props.error ? (
+					<div className={s.errorContainer}>
+						<span className={s.errorMessage}>{props.error}</span>
+					</div>
+				) : (
+					''
+				)}
+				<div>
+					<button className={s.loginButton}>Login</button>
+				</div>
+			</form>
+		</div>
 	)
 }
 
